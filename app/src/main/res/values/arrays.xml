@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="fabricantes">
+        <item>@string/hot_wheels</item>
+        <item>@string/maisto</item>
+        <item>@string/matchbox</item>
+        <item>@string/jada</item>
+        <item>@string/kyosho</item>
+    </string-array>
+
+    <string-array name="marcas">
+        <item>@string/audi</item>
+        <item>@string/bmw</item>
+        <item>@string/chevrolet</item>
+        <item>@string/citroen</item>
+        <item>@string/dodge</item>
+        <item>@string/ferrari</item>
+        <item>@string/fiat</item>
+        <item>@string/ford</item>
+        <item>@string/gmc</item>
+        <item>@string/honda</item>
+        <item>@string/hyundai</item>
+        <item>@string/jaguar</item>
+        <item>@string/jeep</item>
+        <item>@string/kia</item>
+        <item>@string/lamborghini</item>
+        <item>@string/lancia</item>
+        <item>@string/land_rover</item>
+        <item>@string/mazda</item>
+        <item>@string/mclaren</item>
+        <item>@string/mercedes</item>
+        <item>@string/mini</item>
+        <item>@string/mitsubishi</item>
+        <item>@string/n_a</item>
+        <item>@string/nissan</item>
+        <item>@string/peugeot</item>
+        <item>@string/plymouth</item>
+        <item>@string/porsche</item>
+        <item>@string/renault</item>
+        <item>@string/subaru</item>
+        <item>@string/tesla</item>
+        <item>@string/toyota</item>
+        <item>@string/volkswagen</item>
+        <item>@string/volvo</item>
+    </string-array>
+
+    <string-array name="modelos_audi">
+        <item>@string/a5</item>
+        <item>@string/tt</item>
+        <item>@string/r8</item>
+    </string-array>
+
+    <string-array name="modelos_bmw">
+        <item>@string/m2</item>
+        <item>@string/m3</item>
+        <item>@string/m4</item>
+    </string-array>
+
+    <string-array name="modelos_chevrolet">
+        <item>@string/corvette</item>
+        <item>@string/impala</item>
+        <item>@string/c10</item>
+    </string-array>
+
+    <string-array name="modelos_citroen">
+        <item>@string/c3</item>
+        <item>@string/c4</item>
+    </string-array>
+
+    <string-array name="modelos_dodge">
+        <item>@string/challenger</item>
+    </string-array>
+
+    <string-array name="modelos_ferrari">
+        <item>@string/_360</item>
+        <item>@string/_430</item>
+        <item>@string/enzo</item>
+        <item>@string/laferrari</item>
+        <item>@string/_599</item>
+    </string-array>
+
+    <string-array name="modelos_fiat">
+        <item>@string/uno</item>
+        <item>@string/punto</item>
+        <item>@string/toro</item>
+    </string-array>
+
+    <string-array name="modelos_ford">
+        <item>@string/f150</item>
+        <item>@string/gt</item>
+    </string-array>
+
+    <string-array name="modelos_gmc">
+        <item>@string/syclone</item>
+    </string-array>
+
+    <string-array name="modelos_honda">
+        <item>@string/civic</item>
+        <item>@string/prelude</item>
+        <item>@string/nsx</item>
+    </string-array>
+
+    <string-array name="modelos_hyundai">
+        <item>@string/veloster</item>
+    </string-array>
+
+    <string-array name="modelos_jaguar">
+        <item>@string/xe</item>
+    </string-array>
+
+    <string-array name="modelos_kia">
+        <item>@string/stinger</item>
+        <item>@string/sportage</item>
+    </string-array>
+
+    <string-array name="modelos_lamborghini">
+        <item>@string/urus</item>
+        <item>@string/aventador</item>
+        <item>@string/gallardo</item>
+    </string-array>
+
+    <string-array name="modelos_lancia">
+        <item>@string/delta</item>
+    </string-array>
+
+    <string-array name="modelos_land_rover">
+        <item>@string/defender</item>
+        <item>@string/velar</item>
+    </string-array>
+
+    <string-array name="modelos_mazda">
+        <item>@string/miata</item>
+    </string-array>
+
+    <string-array name="modelos_mclaren">
+        <item>@string/f1</item>
+        <item>@string/speedtail</item>
+        <item>@string/senna</item>
+    </string-array>
+
+    <string-array name="modelos_mercedes">
+        <item>@string/amg_gt</item>
+    </string-array>
+
+    <string-array name="modelos_mini">
+        <item>@string/cooper</item>
+    </string-array>
+
+    <string-array name="modelos_na">
+        <item>@string/n_a</item>
+    </string-array>
+
+    <string-array name="modelos_nissan">
+        <item>@string/gtr</item>
+    </string-array>
+
+    <string-array name="modelos_peugeot">
+        <item>@string/_208</item>
+    </string-array>
+
+    <string-array name="modelos_plymonth">
+        <item>@string/superbird</item>
+    </string-array>
+
+    <string-array name="modelos_porsche">
+        <item>@string/_911</item>
+    </string-array>
+
+    <string-array name="modelos_subaru">
+        <item>@string/brz</item>
+        <item>@string/impreza</item>
+    </string-array>
+
+    <string-array name="modelos_tesla">
+        <item>@string/model_S</item>
+        <item>@string/model_3</item>
+    </string-array>
+
+    <string-array name="modelos_toyota">
+        <item>@string/_2000GT</item>
+    </string-array>
+
+    <string-array name="modelos_volskwagen">
+        <item>@string/golf</item>
+        <item>@string/sciroco</item>
+    </string-array>
+
+    <string-array name="modelos_volvo">
+        <item>@string/_850_estate</item>
+    </string-array>
+
+    <string-array name="cores">
+        <item>@string/amarelo</item>
+        <item>@string/azul</item>
+        <item>@string/bege</item>
+        <item>@string/branco</item>
+        <item>@string/cinza</item>
+        <item>@string/laranja</item>
+        <item>@string/lilas</item>
+        <item>@string/marrom</item>
+        <item>@string/preto</item>
+        <item>@string/rosa</item>
+        <item>@string/roxo</item>
+        <item>@string/verde</item>
+        <item>@string/vermelho</item>
+        <item>@string/vinho</item>
+    </string-array>
+
+</resources>

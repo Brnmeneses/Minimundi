@@ -1,0 +1,204 @@
+<resources>
+    <string name="app_name">Minimundi</string>
+    <string name="fabricante">Fabricante</string>
+    <string name="novo_cadastro">Novo Cadastro</string>
+    <string name="marca">Marca</string>
+    <string name="modelo">Modelo</string>
+    <string name="vazio">""</string>
+
+    <!--Fabricantes-->
+    <string name="hot_wheels">Hot-Wheels</string>
+    <string name="maisto">Maisto</string>
+    <string name="matchbox">Matchbox</string>
+    <string name="jada">Jada</string>
+    <string name="kyosho">Kyosho</string>
+
+    <!--Marcas-->
+    <string name="audi">Audi</string>
+    <string name="bmw">Bmw</string>
+    <string name="chevrolet">Chevrolet</string>
+    <string name="citroen">Citroen</string>
+    <string name="dodge">Dodge</string>
+    <string name="ferrari">Ferrari</string>
+    <string name="fiat">Fiat</string>
+    <string name="ford">Ford</string>
+    <string name="gmc">GMC</string>
+    <string name="honda">Honda</string>
+    <string name="hyundai">Hyundai</string>
+    <string name="jaguar">Jaguar</string>
+    <string name="jeep">Jeep</string>
+    <string name="kia">Kia</string>
+    <string name="lamborghini">Lamborghini</string>
+    <string name="lancia">Lancia</string>
+    <string name="land_rover">Land Rover</string>
+    <string name="mazda">Mazda</string>
+    <string name="mclaren">Mclaren</string>
+    <string name="mercedes">Mercedes-Benz</string>
+    <string name="mini">Mini</string>
+    <string name="mitsubishi">Mitsubishi</string>
+    <string name="n_a">"N/A"</string>
+    <string name="nissan">Nissan</string>
+    <string name="peugeot">Peugeot</string>
+    <string name="plymouth">Plymouth</string>
+    <string name="porsche">Porsche</string>
+    <string name="renault">Renault</string>
+    <string name="subaru">Subaru</string>
+    <string name="tesla">Tesla</string>
+    <string name="toyota">Toyota</string>
+    <string name="volkswagen">Volkswagen</string>
+    <string name="volvo">Volvo</string>
+
+
+    <!--Modelos-->
+    <!--Audi-->
+    A5<string name="a5">A5</string>
+    TT<string name="tt">TT</string>
+    R8<string name="r8">R8</string>
+
+    <!--BMW-->
+    M2<string name="m2">M2</string>
+    M3<string name="m3">M3</string>
+    M4<string name="m4">M4</string>
+
+    <!--Chavrolet-->
+    <string name="corvette">Corvette</string>
+    <string name="impala">Impala</string>
+    <string name="c10">C-10</string>
+
+    <!--Citroen-->
+    <string name="c3">C3</string>
+    <string name="c4">C4</string>
+
+    <!--Dodge-->
+    <string name="challenger">Challenger</string>
+
+    <!--Ferrari-->
+    <string name="_360">360</string>
+    <string name="_430">430</string>
+    <string name="enzo">Enzo</string>
+    <string name="laferrari">LaFerrari</string>
+    <string name="_599">599</string>
+
+    <!--Fiat-->
+    <string name="uno">Uno</string>
+    <string name="punto">Punto</string>
+    <string name="toro">Toro</string>
+
+    <!--Ford-->
+    <string name="f150">F-150</string>
+    <string name="gt">GT</string>
+
+    <!--GMC-->
+    <string name="syclone">Syclone</string>
+
+    <!--Honda-->
+    <string name="civic">Civic</string>
+    <string name="prelude">Prelude</string>
+    <string name="nsx">NSX</string>
+
+    <!--Hyundai-->
+    <string name="veloster">Veloster</string>
+
+    <!--Jaguar-->
+    <string name="xe">XE</string>
+
+    <!--KIA-->
+    <string name="stinger">Stinger</string>
+    <string name="sportage">Sportage</string>
+
+    <!--Lamborghini-->
+    <string name="urus">Urus</string>
+    <string name="aventador">Aventador</string>
+    <string name="gallardo">Gallardo</string>
+
+    <!--Lancia-->
+    <string name="delta">Delta</string>
+
+    <!--Land Rover-->
+    <string name="defender">Defender</string>
+    <string name="velar">Velar</string>
+
+    <!--Mazda-->
+    <string name="miata">Miata</string>
+
+    <!--Mclaren-->
+    <string name="f1">F1</string>
+    <string name="speedtail">Speedtail</string>
+    <string name="senna">Senna</string>
+
+    <!--Mercedes-Benz-->
+    <string name="amg_gt">F-150</string>
+
+    <!--Mini-->
+    <string name="cooper">Cooper</string>
+
+    <!--Mitshubish-->
+    <string name="lancer">Lancer</string>
+
+    <!--Nissan-->
+    <string name="gtr">GTR</string>
+
+    <!--Peugeot-->
+    <string name="_208">208</string>
+
+    <!--Plymouth-->
+    <string name="superbird">Superbird</string>
+
+    <!--Porsche-->
+    <string name="_911">911</string>
+
+    <!--Subaru-->
+    <string name="brz">BRZ</string>
+    <string name="impreza">Impreza</string>
+
+    <!--Tesla-->
+    <string name="model_S">F-Model S</string>
+    <string name="model_3">Model 3</string>
+
+    <!--Toyota-->
+    <string name="_2000GT">F-2000GT</string>
+    <string name="celica">Celica</string>
+
+    <!--Volkswagen-->
+    <string name="golf">F-Golf</string>
+    <string name="sciroco">F-Sciroco</string>
+
+    <!--Volvo-->
+    <string name="_850_estate">850 Estate</string>
+    <string name="ano">Ano</string>
+    <string name="serie">Série</string>
+    <string name="cor">Cor</string>
+
+
+
+    <!--Cores-->
+    <string name="amarelo">Amarelo</string>
+    <string name="azul">Azul</string>
+    <string name="bege">Bege</string>
+    <string name="branco">Branco</string>
+    <string name="cinza">Cinza</string>
+    <string name="laranja">Laranja</string>
+    <string name="lilas">Lilas</string>
+    <string name="marrom">Marrom</string>
+    <string name="preto">Preto</string>
+    <string name="rosa">Rosa</string>
+    <string name="roxo">Roxo</string>
+    <string name="verde">Verde</string>
+    <string name="vermelho">Vermelho</string>
+    <string name="vinho">Vinho</string>
+
+
+    <string name="raridade">Raridade</string>
+    <string name="comum">Comum</string>
+    <string name="raro">Raro</string>
+    <string name="thunt">T-Hunted</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="limpar">Limpar</string>
+    <string name="limpar_campos">Campos Limpos</string>
+    <string name="hint_serie">Série</string>
+    <string name="loose">Loose?</string>
+    <string name="hint_ano">Ano</string>
+    <string name="nome">Nome</string>
+    <string name="obs">Observação</string>
+
+</resources>
