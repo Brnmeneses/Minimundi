@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (marca.equals(getString(R.string.mini))) {
                     popularModelos(R.array.modelos_mini);
 /*                } else if (marca.equals(getString(R.string.mitsubishi))) {
-                    popularModelos(R.array.modelos_mitsubishi);*/
+                    popularModelos(R.array.modelos_mitsubishi); */
                 } else if (marca.equals(getString(R.string.n_a))) {
                     popularModelos(R.array.modelos_na);
                 } else if (marca.equals(getString(R.string.nissan))) {
