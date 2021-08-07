@@ -146,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 mensagem = getString(R.string.nenhuma_selecionada);
+
+
         }*/
 
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
