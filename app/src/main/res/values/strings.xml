@@ -51,14 +51,20 @@
 
     <!--Modelos-->
     <!--Audi-->
-    A5<string name="a5">A5</string>
-    TT<string name="tt">TT</string>
-    R8<string name="r8">R8</string>
+    A5
+    <string name="a5">A5</string>
+    TT
+    <string name="tt">TT</string>
+    R8
+    <string name="r8">R8</string>
 
     <!--BMW-->
-    M2<string name="m2">M2</string>
-    M3<string name="m3">M3</string>
-    M4<string name="m4">M4</string>
+    M2
+    <string name="m2">M2</string>
+    M3
+    <string name="m3">M3</string>
+    M4
+    <string name="m4">M4</string>
 
     <!--Chavrolet-->
     <string name="corvette">Corvette</string>
@@ -170,7 +176,6 @@
     <string name="cor">Cor</string>
 
 
-
     <!--Cores-->
     <string name="amarelo">Amarelo</string>
     <string name="azul">Azul</string>
@@ -200,5 +205,6 @@
     <string name="hint_ano">Ano</string>
     <string name="nome">Nome</string>
     <string name="obs">Observação</string>
+    <string name="foi_clicado">foi clicado</string>
 
 </resources>
