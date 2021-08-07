@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (marca.equals(getString(R.string.porsche))) {
                     popularModelos(R.array.modelos_porsche);
 /*                } else if (marca.equals(getString(R.string.renault))) {
-                    popularModelos(R.array.modelos_renault);*/
+                    popularModelos(R.array.modelos_renault); */
                 } else if (marca.equals(getString(R.string.subaru))) {
                     popularModelos(R.array.modelos_subaru);
                 } else if (marca.equals(getString(R.string.tesla))) {
@@ -146,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 mensagem = getString(R.string.nenhuma_selecionada);
-
 
         }*/
 
