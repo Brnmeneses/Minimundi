@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Minimundi</string>
+
     <string name="fabricante">Fabricante</string>
     <string name="novo_cadastro">Novo Cadastro</string>
     <string name="marca">Marca</string>
@@ -7,7 +8,7 @@
     <string name="vazio">""</string>
 
     <!--Fabricantes-->
-    <string name="hot_wheels">Hot-Wheels</string>
+    <string name="hot_wheels">Hot wheels</string>
     <string name="maisto">Maisto</string>
     <string name="matchbox">Matchbox</string>
     <string name="jada">Jada</string>
@@ -133,7 +134,7 @@
     <string name="senna">Senna</string>
 
     <!--Mercedes-Benz-->
-    <string name="amg_gt">F-150</string>
+    <string name="amg_gt">AMG GT</string>
 
     <!--Mini-->
     <string name="cooper">Cooper</string>
@@ -207,4 +208,13 @@
     <string name="obs">Observação</string>
     <string name="foi_clicado">foi clicado</string>
 
+    <!--Anos-->
+    <string name="_2021">2021</string>
+    <string name="_2020">2020</string>
+    <string name="_2019">2019</string>
+    <string name="_2015">2015</string>
+    <string name="_2014">2014</string>
+    <string name="_2008">2008</string>
+    <string name="_2007">2007</string>
+    <string name="_1999">1999</string>
 </resources>
