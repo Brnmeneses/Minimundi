@@ -2,6 +2,8 @@ package com.br.mimundi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextSerie, editTextAno, editTextNome, editTextObs;
     private CheckBox cbLoose;
     private RadioGroup radioGroupRaridade;
+
+    public static final String FABRICANTE = "FABRICANTE";
+    public static final String MARCA = "MARCA";
+    public static final String MODELO = "MODELO";
+    public static final String COR = "COR";
+    public static final String SERIE = "SERIE";
+    public static final String RARIDADE = "RARIDADE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,27 +138,59 @@ public class MainActivity extends AppCompatActivity {
         spinnerModelos.setAdapter(adapter);
     }
 
-    public void validarDados(View view){
+    public void salvar(View view){
 
         String mensagem = "SALVO";
 
-/*        switch (radioGroupLinguagens.getCheckedRadioButtonId()){
+        /*
+        * *
+        * Aqui preciso pegar tudo selecionado
+        * Fabricante
+        * Marca
+        * Modelo
+        * Serie
+        *       e então criar o objeto Minitarua
+        *
+        * */
 
-            case R.id.radioButtonJava:
-                mensagem = getString(R.string.java) + getString(R.string.foi_selecionada);
+        String fabricante = (String) spinnerFabricante.getSelectedItem();
+        String marca = (String) spinnerMarcas.getSelectedItem();
+        String modelo = (String) spinnerModelos.getSelectedItem();
+        String cor = (String) spinnerCores.getSelectedItem();
+        String serie = editTextSerie.getText().toString();
+        String raridade = "comum";
+
+        switch (radioGroupRaridade.getCheckedRadioButtonId()){
+
+            case R.id.radioButtonComum:
+                raridade = getString(R.string.comum);
                 break;
-            case R.id.radioButtonNode:
-                mensagem = getString(R.string.node) + getString(R.string.foi_selecionada);
+            case R.id.radioButtonRaro:
+                raridade = getString(R.string.raro);
                 break;
-            case R.id.radioButtonPython:
-                mensagem = getString(R.string.python) + getString(R.string.foi_selecionada);
+            case R.id.radioButtonThunt:
+                raridade = getString(R.string.thunt);
                 break;
             default:
-                mensagem = getString(R.string.nenhuma_selecionada);
+                raridade = getString(R.string.comum);
 
-        }*/
+        }
 
-        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent();
+
+        intent.putExtra(FABRICANTE, fabricante);
+        intent.putExtra(MARCA, marca);
+        intent.putExtra(MODELO, modelo);
+        intent.putExtra(COR, cor);
+        intent.putExtra(SERIE, serie);
+        intent.putExtra(RARIDADE, raridade);
+
+        setResult(Activity.RESULT_OK, intent);
+
+        finish();
+
+        //Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
 
     public void limparCampos(View view){

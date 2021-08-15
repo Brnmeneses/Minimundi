@@ -217,4 +217,13 @@
     <string name="_2008">2008</string>
     <string name="_2007">2007</string>
     <string name="_1999">1999</string>
+    <string name="autor">Bruno Rodrigues Melo de Meneses</string>
+    <string name="curso">Especialização JAVA XX</string>
+    <string name="email">brnmeneses@hotmail.com</string>
+    <string name="bio">Aplicativo desenvolvido pensando em facilitar ao colecionador manter os dados atualizados de sua coleção</string>
+    <string name="utfpr">Universidade Tecnológica Federal do Paraná UTFPR</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="autoria">Autoria</string>
+    <string name="salvar">Salvar</string>
+    <string name="sucesso">Salvo com sucesso</string>
 </resources>

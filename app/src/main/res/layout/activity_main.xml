@@ -154,19 +154,19 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextObs">
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButtonComum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/comum" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButtonRaro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/raro" />
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButtonThunt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/thunt" />
@@ -177,8 +177,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:onClick="validarDados"
-            android:text="@string/confirmar"
+            android:onClick="salvar"
+            android:text="@string/salvar"
             app:layout_constraintStart_toStartOf="@+id/radioGroupRaridade"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupRaridade" />
 
