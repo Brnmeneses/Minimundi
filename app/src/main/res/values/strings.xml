@@ -226,4 +226,9 @@
     <string name="autoria">Autoria</string>
     <string name="salvar">Salvar</string>
     <string name="sucesso">Salvo com sucesso</string>
+    <string name="sobre">Sobre</string>
+    <string name="adcionar">Adcionar</string>
+    <string name="listagem">" Minha Coleção"</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
 </resources>

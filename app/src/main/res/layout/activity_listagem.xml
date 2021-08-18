@@ -2,30 +2,25 @@
 <android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutPrincipal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ListagemActivity">
 
+    <TextView
+        android:id="@+id/textViewListagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:text="@string/listagem"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <ListView
-        android:id="@+id/listViewFabricante"
+        android:id="@+id/listViewMiniatura"
         android:layout_width="wrap_content"
-        android:layout_height="521dp"
+        android:layout_height="646dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="cadastrarNovo"
-        android:text="@string/cadastrar" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="mostarAutoria"
-        android:text="@string/autoria" />
 
 </android.widget.LinearLayout>

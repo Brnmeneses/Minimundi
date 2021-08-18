@@ -1,21 +1,27 @@
 package com.br.mimundi;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListagemActivity extends AppCompatActivity {
 
-    private ListView listViewFabricante;
+    private ListView listViewMiniaturas;
 
     public static final int CADASTRAR_NOVO = 1;
 
@@ -26,58 +32,26 @@ public class ListagemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listagem);
 
-        listViewFabricante = findViewById(R.id.listViewFabricante);
+        listViewMiniaturas = findViewById(R.id.listViewMiniatura);
 
-        listViewFabricante.setOnItemClickListener((adapterView, view, position, l) -> {
-            Miniatura fabricante = (Miniatura) listViewFabricante.getItemAtPosition(position);
+   /*     listViewMiniaturas.setOnItemClickListener((adapterView, view, position, l) -> {
+            Miniatura fabricante = (Miniatura) listViewMiniaturas.getItemAtPosition(position);
             Toast.makeText(getApplicationContext(), fabricante.getModelo(), Toast.LENGTH_LONG).show();
-        });
+        });*/
 
-        //popularList();
-
+        registerForContextMenu(listViewMiniaturas);
     }
 
-    private void popularList(ArrayList<Miniatura> miniaturaList) {
-
-/*        String[] marcas = getResources().getStringArray(R.array.marcas_list);
-        String[] modelos = getResources().getStringArray(R.array.modelos_list);
-        String[] cores = getResources().getStringArray(R.array.cores_list);
-        String[] anos = getResources().getStringArray(R.array.anos_list);
-
-
-        for (int i = 0; i < marcas.length; i++) {
-            miniaturaList.add(new Miniatura(
-                    "Hot wheels",
-                    marcas[i],
-                    modelos[i],
-                    anos[i],
-                    cores[i]));
-        }
-*/
+    private void popularLista(ArrayList<Miniatura> miniaturaList) {
         ArrayAdapter<Miniatura> adapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_expandable_list_item_1,
                         miniaturaList);
 
-        listViewFabricante.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        listViewMiniaturas.setAdapter(adapter);
     }
-
-    public void mostarAutoria(View view){
-        Intent intent = new Intent(this,
-                AutoriaActivity.class);
-
-        startActivity(intent);
-    }
-
-    public void cadastrarNovo(View view){
-        Intent intent = new Intent(this,
-                MainActivity.class);
-
-        startActivityForResult(intent,
-                CADASTRAR_NOVO);
-
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode,
@@ -103,7 +77,7 @@ public class ListagemActivity extends AppCompatActivity {
 
                 miniaturaListTela.addAll(miniaturaList);
 
-                popularList(miniaturaListTela);
+                popularLista(miniaturaListTela);
 
                 Toast.makeText(this,
                         getString(R.string.sucesso),
@@ -114,5 +88,87 @@ public class ListagemActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.principal_opcoes, menu);
+        return true;
+    }
 
+    private void mostrarMensagem(String mensagem){
+        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
+    }
+
+    private void mostrarDadosSobre(){
+        Intent intent = new Intent(this,
+                AutoriaActivity.class);
+
+        startActivity(intent);
+    }
+
+    private void mostrarCadastrarNovo(){
+        Intent intent = new Intent(this,
+                MainActivity.class);
+
+        startActivityForResult(intent,
+                CADASTRAR_NOVO);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuItemAdicionar:
+                mostrarCadastrarNovo();
+                return true;
+            case R.id.menuItemSobre:
+                mostrarDadosSobre();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void alterar(int posicao){
+        Miniatura miniaturaListAlterar = miniaturaListTela.get(posicao);
+
+    }
+
+    private void excluir(int posicao){
+        miniaturaListTela.remove(posicao);
+        popularLista(miniaturaListTela);
+        //adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        getMenuInflater().inflate(R.menu.principal_menu_contexto, menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        AdapterView.AdapterContextMenuInfo info;
+
+        info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        switch (item.getItemId()){
+            case R.id.menuItemAlterar:
+                alterar(info.position);
+                return true;
+
+            case R.id.menuItemExcluir:
+                excluir(info.position);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+
+    /*end*/
 }
