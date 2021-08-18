@@ -24,8 +24,10 @@ public class ListagemActivity extends AppCompatActivity {
     private ListView listViewMiniaturas;
 
     public static final int CADASTRAR_NOVO = 1;
+    public static final int EDITAR_REGISTRO = 2;
 
     private ArrayList<Miniatura> miniaturaListTela = new ArrayList<>();
+    private ArrayAdapter<Miniatura> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class ListagemActivity extends AppCompatActivity {
     }
 
     private void popularLista(ArrayList<Miniatura> miniaturaList) {
-        ArrayAdapter<Miniatura> adapter =
+        adapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_expandable_list_item_1,
                         miniaturaList);
@@ -109,9 +111,7 @@ public class ListagemActivity extends AppCompatActivity {
         Intent intent = new Intent(this,
                 MainActivity.class);
 
-        startActivityForResult(intent,
-                CADASTRAR_NOVO);
-
+        startActivityForResult(intent,CADASTRAR_NOVO);
     }
 
     @Override
@@ -131,12 +131,19 @@ public class ListagemActivity extends AppCompatActivity {
     private void alterar(int posicao){
         Miniatura miniaturaListAlterar = miniaturaListTela.get(posicao);
 
+        Intent intent = new Intent(this,
+                MainActivity.class);
+
+        intent.putExtra(MainActivity.FABRICANTE, "BRUNO");
+
+        startActivityForResult(intent, EDITAR_REGISTRO);
+
     }
 
     private void excluir(int posicao){
         miniaturaListTela.remove(posicao);
         popularLista(miniaturaListTela);
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -169,6 +176,4 @@ public class ListagemActivity extends AppCompatActivity {
         }
     }
 
-
-    /*end*/
 }

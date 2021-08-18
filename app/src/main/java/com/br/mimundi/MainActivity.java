@@ -1,10 +1,14 @@
 package com.br.mimundi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent();
 
         spinnerFabricante = findViewById(R.id.spinnerFabricantes);
         spinnerMarcas = findViewById(R.id.spinnerMarcas);
@@ -138,21 +144,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerModelos.setAdapter(adapter);
     }
 
-    public void salvar(View view){
-
-        String mensagem = "SALVO";
-
-        /*
-        * *
-        * Aqui preciso pegar tudo selecionado
-        * Fabricante
-        * Marca
-        * Modelo
-        * Serie
-        *       e então criar o objeto Minitarua
-        *
-        * */
-
+    public void salvar(){
         String fabricante = (String) spinnerFabricante.getSelectedItem();
         String marca = (String) spinnerMarcas.getSelectedItem();
         String modelo = (String) spinnerModelos.getSelectedItem();
@@ -176,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
         Intent intent = new Intent();
 
         intent.putExtra(FABRICANTE, fabricante);
@@ -186,14 +177,23 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(SERIE, serie);
         intent.putExtra(RARIDADE, raridade);
 
+        intent.getAction();
         setResult(Activity.RESULT_OK, intent);
 
         finish();
-
-        //Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
 
-    public void limparCampos(View view){
+    public void cancelar(){
+        setResult(Activity.RESULT_CANCELED);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        cancelar();
+    }
+
+    public void limparCampos(){
 
         editTextSerie.setText(null);
         editTextAno.setText(null);
@@ -207,5 +207,32 @@ public class MainActivity extends AppCompatActivity {
 
         spinnerFabricante.requestFocus();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cadastro_opcoes, menu);
+        return true;
+    }
+
+    private void mostrarMensagem(String mensagem){
+        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuItemSalvar:
+                salvar();
+                mostrarMensagem("Salvar");
+                return true;
+            case R.id.menuItemLimpar:
+                limparCampos();
+                mostrarMensagem("Limpar");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 }

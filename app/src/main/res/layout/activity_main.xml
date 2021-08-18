@@ -172,27 +172,6 @@
                 android:text="@string/thunt" />
         </RadioGroup>
 
-        <Button
-            android:id="@+id/buttonConfirmar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:onClick="salvar"
-            android:text="@string/salvar"
-            app:layout_constraintStart_toStartOf="@+id/radioGroupRaridade"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroupRaridade" />
-
-        <Button
-            android:id="@+id/buttonLimpar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:onClick="limparCampos"
-            android:text="@string/limpar"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroupRaridade"
-            app:layout_constraintStart_toEndOf="@+id/buttonConfirmar"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroupRaridade" />
-
         <CheckBox
             android:id="@+id/cbLoose"
             android:layout_width="wrap_content"
