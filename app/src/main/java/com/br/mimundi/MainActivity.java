@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbLoose;
     private RadioGroup radioGroupRaridade;
 
+    private int    modo;
+    private String nomeOriginal;
+
     public static final String FABRICANTE = "FABRICANTE";
     public static final String MARCA = "MARCA";
     public static final String MODELO = "MODELO";
@@ -32,12 +35,39 @@ public class MainActivity extends AppCompatActivity {
     public static final String SERIE = "SERIE";
     public static final String RARIDADE = "RARIDADE";
 
+    public static final String MODO    = "MODO";
+    public static final int    NOVO    = 1;
+    public static final int    ALTERAR = 2;
+
+
+    public static void novaPessoa(AppCompatActivity activity){
+
+        Intent intent = new Intent(activity, ListagemActivity.class);
+
+        intent.putExtra(MODO, NOVO);
+
+        activity.startActivityForResult(intent, NOVO);
+    }
+
+    public static void alterarPessoa(AppCompatActivity activity, Miniatura miniatura){
+
+        Intent intent = new Intent(activity, ListagemActivity.class);
+
+        intent.putExtra(MODO, ALTERAR);
+        intent.putExtra(FABRICANTE, miniatura.getFabricante());
+        intent.putExtra(MARCA, miniatura.getMarca());
+        intent.putExtra(MODELO, miniatura.getFabricante());
+        intent.putExtra(COR, miniatura.getCor());
+        /*intent.putExtra(SERIE, miniatura.get);
+        intent.putExtra(RARIDADE, miniatura.get);*/
+
+        activity.startActivityForResult(intent, ALTERAR);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent intent = new Intent();
 
         spinnerFabricante = findViewById(R.id.spinnerFabricantes);
         spinnerMarcas = findViewById(R.id.spinnerMarcas);
@@ -49,6 +79,20 @@ public class MainActivity extends AppCompatActivity {
         editTextObs = findViewById(R.id.editTextObs);
         cbLoose = findViewById(R.id.cbLoose);
         radioGroupRaridade = findViewById(R.id.radioGroupRaridade);
+
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null){
+            nomeOriginal = bundle.getString(FABRICANTE);
+            editTextNome.setText(nomeOriginal);
+            setTitle(getString(R.string.alterar_miniatura));
+
+        } else {
+            setTitle(getString(R.string.nova_miniatura));
+        }
+
 
         spinnerMarcas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

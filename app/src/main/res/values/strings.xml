@@ -231,4 +231,6 @@
     <string name="listagem">" Minha Coleção"</string>
     <string name="alterar">Alterar</string>
     <string name="excluir">Excluir</string>
+    <string name="nova_miniatura">Nova Miniatura</string>
+    <string name="alterar_miniatura">Alterar Miniatura</string>
 </resources>

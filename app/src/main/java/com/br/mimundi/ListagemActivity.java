@@ -23,9 +23,6 @@ public class ListagemActivity extends AppCompatActivity {
 
     private ListView listViewMiniaturas;
 
-    public static final int CADASTRAR_NOVO = 1;
-    public static final int EDITAR_REGISTRO = 2;
-
     private ArrayList<Miniatura> miniaturaListTela = new ArrayList<>();
     private ArrayAdapter<Miniatura> adapter;
 
@@ -59,7 +56,7 @@ public class ListagemActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,
                                     int resultCode,
                                     @Nullable Intent data) {
-        if (requestCode == CADASTRAR_NOVO && resultCode == Activity.RESULT_OK) {
+        if (requestCode == MainActivity.NOVO && resultCode == Activity.RESULT_OK) {
 
             Bundle bundle = data.getExtras();
             if (bundle != null) {
@@ -111,7 +108,7 @@ public class ListagemActivity extends AppCompatActivity {
         Intent intent = new Intent(this,
                 MainActivity.class);
 
-        startActivityForResult(intent,CADASTRAR_NOVO);
+        startActivityForResult(intent,MainActivity.NOVO);
     }
 
     @Override
@@ -129,14 +126,14 @@ public class ListagemActivity extends AppCompatActivity {
     }
 
     private void alterar(int posicao){
-        Miniatura miniaturaListAlterar = miniaturaListTela.get(posicao);
+        Miniatura miniatura = miniaturaListTela.get(posicao);
 
         Intent intent = new Intent(this,
                 MainActivity.class);
 
-        intent.putExtra(MainActivity.FABRICANTE, "BRUNO");
+        intent.putExtra(MainActivity.FABRICANTE, miniatura.getFabricante());
 
-        startActivityForResult(intent, EDITAR_REGISTRO);
+        startActivityForResult(intent, MainActivity.ALTERAR);
 
     }
 
