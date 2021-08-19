@@ -56,7 +56,9 @@ public class ListagemActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,
                                     int resultCode,
                                     @Nullable Intent data) {
-        if (requestCode == MainActivity.NOVO && resultCode == Activity.RESULT_OK) {
+        if ((requestCode == MainActivity.NOVO
+        || requestCode == MainActivity.ALTERAR)
+                && resultCode == Activity.RESULT_OK) {
 
             Bundle bundle = data.getExtras();
             if (bundle != null) {
@@ -72,7 +74,9 @@ public class ListagemActivity extends AppCompatActivity {
 
                 ArrayList<Miniatura> miniaturaList = new ArrayList<>();
 
-                miniaturaList.add(new Miniatura(fabricante, marca, modelo, "2021",cor));
+                Miniatura nvMini = new Miniatura(fabricante, marca, modelo, "2021",cor);
+                miniaturaList.contains(nvMini);
+                miniaturaList.add(nvMini);
 
                 miniaturaListTela.addAll(miniaturaList);
 
@@ -132,6 +136,9 @@ public class ListagemActivity extends AppCompatActivity {
                 MainActivity.class);
 
         intent.putExtra(MainActivity.FABRICANTE, miniatura.getFabricante());
+        intent.putExtra(MainActivity.MARCA, miniatura.getMarca());
+        intent.putExtra(MainActivity.MODELO, miniatura.getModelo());
+        intent.putExtra(MainActivity.COR, miniatura.getCor());
 
         startActivityForResult(intent, MainActivity.ALTERAR);
 

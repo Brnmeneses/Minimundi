@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +17,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerFabricante, spinnerMarcas, spinnerModelos, spinnerCores;
@@ -26,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup radioGroupRaridade;
 
     private int    modo;
-    private String nomeOriginal;
+    private String editFabricante;
+    private String editMarca;
+    private String editModelo;
+    private String editCor;
 
     public static final String FABRICANTE = "FABRICANTE";
     public static final String MARCA = "MARCA";
@@ -80,14 +85,25 @@ public class MainActivity extends AppCompatActivity {
         cbLoose = findViewById(R.id.cbLoose);
         radioGroupRaridade = findViewById(R.id.radioGroupRaridade);
 
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
         if (bundle != null){
-            nomeOriginal = bundle.getString(FABRICANTE);
-            editTextNome.setText(nomeOriginal);
+
+            modo = bundle.getInt(MODO, ALTERAR);
+            System.out.println("modo: "+modo);
             setTitle(getString(R.string.alterar_miniatura));
+
+            editFabricante = bundle.getString(FABRICANTE);
+            editMarca = bundle.getString(MARCA);
+            editModelo = bundle.getString(MODELO);
+            editCor = bundle.getString(COR);
+
+            popularEditFabricante(editFabricante);
+            popularEditMarca(editMarca);
+            popularEditModelo(editModelo);
+            popularEditCor(editCor);
+
 
         } else {
             setTitle(getString(R.string.nova_miniatura));
@@ -174,6 +190,39 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void popularEditFabricante(String editFabricante) {
+        String[] fabricantesArray = getResources().getStringArray(R.array.fabricantes);
+        int index = 0;
+
+        for (int i = 0;i <fabricantesArray.length;i++){
+            if(fabricantesArray[i].equals(editFabricante)) {
+                index = i;
+            }
+        }
+        spinnerFabricante.setSelection(index);
+    }
+
+    private void popularEditMarca(String editMarca) {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add(editMarca);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
+        spinnerMarcas.setAdapter(adapter);
+    }
+
+    private void popularEditModelo(String editModelo) {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add(editModelo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
+        spinnerModelos.setAdapter(adapter);
+    }
+
+    private void popularEditCor(String editCor) {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add(editCor);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
+        spinnerCores.setAdapter(adapter);
     }
 
     private void popularModelos(int arrayId) {

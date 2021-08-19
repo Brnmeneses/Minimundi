@@ -58,7 +58,8 @@ public class Miniatura {
 
     @Override
     public String toString() {
-        return getMarca() + " " +
+        return getFabricante() + " " +
+                getMarca() + " " +
                 getModelo() + " " +
                 getAno()  + " " +
                 getCor();
