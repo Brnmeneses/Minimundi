@@ -1,20 +1,34 @@
 package com.br.mimundi;
 
+import java.util.Random;
+
 public class Miniatura {
 
+    private int    id;
     private String fabricante;
     private String marca;
     private String modelo;
     private String ano;
     private String cor;
 
+    public static int getRandomInt(int min, int max) {
+        Random random = new Random();
+
+        return random.nextInt((max - min) + 1) + min;
+    }
+
     public Miniatura(String fabricante, String marca, String modelo, String ano, String cor) {
+        setId();
         setFabricante(fabricante);
         setMarca(marca);
         setModelo(modelo);
         setAno(ano);
         setCor(cor);
     }
+
+    public int getId() {return id;}
+
+    public void setId() {this.id = getRandomInt(1,100);}
 
     public String getFabricante() {
         return fabricante;
@@ -58,7 +72,8 @@ public class Miniatura {
 
     @Override
     public String toString() {
-        return getFabricante() + " " +
+        return  //getId() + " - " +
+                getFabricante() + " " +
                 getMarca() + " " +
                 getModelo() + " " +
                 getAno()  + " " +

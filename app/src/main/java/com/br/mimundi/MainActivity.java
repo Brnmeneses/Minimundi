@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private String editModelo;
     private String editCor;
 
+    public static final String IDENTIFICADOR = "IDENTIFICADOR";
     public static final String FABRICANTE = "FABRICANTE";
     public static final String MARCA = "MARCA";
     public static final String MODELO = "MODELO";

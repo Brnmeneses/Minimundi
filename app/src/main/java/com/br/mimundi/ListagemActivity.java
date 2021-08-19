@@ -33,11 +33,6 @@ public class ListagemActivity extends AppCompatActivity {
 
         listViewMiniaturas = findViewById(R.id.listViewMiniatura);
 
-   /*     listViewMiniaturas.setOnItemClickListener((adapterView, view, position, l) -> {
-            Miniatura fabricante = (Miniatura) listViewMiniaturas.getItemAtPosition(position);
-            Toast.makeText(getApplicationContext(), fabricante.getModelo(), Toast.LENGTH_LONG).show();
-        });*/
-
         registerForContextMenu(listViewMiniaturas);
     }
 
@@ -73,10 +68,7 @@ public class ListagemActivity extends AppCompatActivity {
 
 
                 ArrayList<Miniatura> miniaturaList = new ArrayList<>();
-
-                Miniatura nvMini = new Miniatura(fabricante, marca, modelo, "2021",cor);
-                miniaturaList.contains(nvMini);
-                miniaturaList.add(nvMini);
+                miniaturaList.add(new Miniatura(fabricante, marca, modelo, "2021",cor));
 
                 miniaturaListTela.addAll(miniaturaList);
 
@@ -142,6 +134,7 @@ public class ListagemActivity extends AppCompatActivity {
 
         startActivityForResult(intent, MainActivity.ALTERAR);
 
+        excluir(posicao);
     }
 
     private void excluir(int posicao){
