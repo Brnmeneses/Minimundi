@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerFabricante, spinnerMarcas, spinnerModelos, spinnerCores;
-    private EditText editTextSerie, editTextAno, editTextNome, editTextObs;
+    private EditText editTextAno;
     private CheckBox cbLoose;
     private RadioGroup radioGroupRaridade;
 
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private String editMarca;
     private String editModelo;
     private String editCor;
+    private String editAno;
+    private String editLoose;
+    private String editRaridade;
 
     private Boolean flagOnItemSelectedListener = true;
 
@@ -38,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String MARCA = "MARCA";
     public static final String MODELO = "MODELO";
     public static final String COR = "COR";
-    public static final String SERIE = "SERIE";
+    public static final String ANO = "ANO";
+    public static final String LOOSE = "LOOSE";
     public static final String RARIDADE = "RARIDADE";
 
     public static final String MODO    = "MODO";
@@ -65,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(MARCA, miniatura.getMarca());
         intent.putExtra(MODELO, miniatura.getFabricante());
         intent.putExtra(COR, miniatura.getCor());
-        /*intent.putExtra(SERIE, miniatura.get);
-        intent.putExtra(RARIDADE, miniatura.get);*/
+        intent.putExtra(ANO, miniatura.getAno());
+        intent.putExtra(LOOSE, miniatura.getStringLoose());
+        intent.putExtra(RARIDADE, miniatura.getRaridade());
 
         activity.startActivityForResult(intent, ALTERAR);
     }
@@ -145,10 +151,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerMarcas = findViewById(R.id.spinnerMarcas);
         spinnerModelos = findViewById(R.id.spinnerModelos);
         spinnerCores = findViewById(R.id.spinnerCores);
-        editTextSerie = findViewById(R.id.editTextSerie);
         editTextAno = findViewById(R.id.editTextAno);
-        editTextNome = findViewById(R.id.editTextNome);
-        editTextObs = findViewById(R.id.editTextObs);
         cbLoose = findViewById(R.id.cbLoose);
         radioGroupRaridade = findViewById(R.id.radioGroupRaridade);
 
@@ -165,12 +168,28 @@ public class MainActivity extends AppCompatActivity {
             editMarca = bundle.getString(MARCA);
             editModelo = bundle.getString(MODELO);
             editCor = bundle.getString(COR);
+            editAno = bundle.getString(ANO);
+            editLoose = bundle.getString(LOOSE);
+            editRaridade = bundle.getString(RARIDADE);
 
             popularEditFabricante(editFabricante);
             popularEditMarca(editMarca);
             popularEditModelo(editMarca, editModelo);
             popularEditCor(editCor);
 
+            editTextAno.setText(editAno);
+            cbLoose.setChecked(editLoose.equals("T") ? true : false);
+            switch (editRaridade) {
+                case "Raro":
+                    radioGroupRaridade.check(R.id.radioButtonRaro);
+                    break;
+                case "T-Hunted":
+                    radioGroupRaridade.check(R.id.radioButtonThunt);
+                    break;
+                default:
+                    radioGroupRaridade.check(R.id.radioButtonComum);
+                    break;
+            }
 
         } else {
             setTitle(getString(R.string.nova_miniatura));
@@ -262,7 +281,8 @@ public class MainActivity extends AppCompatActivity {
         String marca = (String) spinnerMarcas.getSelectedItem();
         String modelo = (String) spinnerModelos.getSelectedItem();
         String cor = (String) spinnerCores.getSelectedItem();
-        String serie = editTextSerie.getText().toString();
+        String ano = editTextAno.getText().toString().trim();
+        String loose = cbLoose.isChecked() ? "T" : "F";
         String raridade = "comum";
 
         switch (radioGroupRaridade.getCheckedRadioButtonId()){
@@ -290,7 +310,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(MARCA, marca);
         intent.putExtra(MODELO, modelo);
         intent.putExtra(COR, cor);
-        intent.putExtra(SERIE, serie);
+        intent.putExtra(ANO, ano);
+        intent.putExtra(LOOSE, loose);
         intent.putExtra(RARIDADE, raridade);
 
         intent.getAction();
@@ -311,10 +332,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void limparCampos(){
 
-        editTextSerie.setText(null);
         editTextAno.setText(null);
-        editTextNome.setText(null);
-        editTextObs.setText(null);
 
         cbLoose.setChecked(false);
         radioGroupRaridade.clearCheck();

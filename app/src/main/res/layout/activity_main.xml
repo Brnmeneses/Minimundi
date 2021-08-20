@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="@string/fabricante"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +34,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:entries="@array/fabricantes"
+            android:minHeight="48dp"
             android:spinnerMode="dialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewFabricante" />
@@ -57,6 +58,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:entries="@array/marcas"
+            android:minHeight="48dp"
             android:spinnerMode="dialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMarca" />
@@ -79,33 +81,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
+            android:minHeight="48dp"
             android:spinnerMode="dialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewModelos" />
-
-        <TextView
-            android:id="@+id/textViewSerie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/serie"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerCores" />
-
-        <EditText
-            android:id="@+id/editTextSerie"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/hint_serie"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSerie" />
 
         <TextView
             android:id="@+id/textViewCor"
@@ -126,20 +105,66 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="24dp"
             android:entries="@array/cores"
+            android:minHeight="48dp"
             android:spinnerMode="dialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCor" />
+
+        <CheckBox
+            android:id="@+id/cbLoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/na_embaladao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editTextAno"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAno" />
+
+        <TextView
+            android:id="@+id/textViewAno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/ano"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCores" />
+
+        <EditText
+            android:id="@+id/editTextAno"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/hint_ano"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAno" />
+
+        <TextView
+            android:id="@+id/textViewRaridade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/raridade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextAno" />
 
         <RadioGroup
             android:id="@+id/radioGroupRaridade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
             android:addStatesFromChildren="false"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextObs">
+            app:layout_constraintTop_toBottomOf="@+id/textViewRaridade">
 
             <RadioButton
                 android:id="@+id/radioButtonComum"
@@ -159,88 +184,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/thunt" />
         </RadioGroup>
-
-        <CheckBox
-            android:id="@+id/cbLoose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/loose"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editTextSerie"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSerie" />
-
-        <TextView
-            android:id="@+id/textViewAno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/ano"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSerie" />
-
-        <EditText
-            android:id="@+id/editTextAno"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/hint_ano"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAno" />
-
-        <TextView
-            android:id="@+id/textViewNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/nome"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAno" />
-
-        <EditText
-            android:id="@+id/editTextNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/nome"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNome" />
-
-        <TextView
-            android:id="@+id/textViewObs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/obs"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNome" />
-
-        <EditText
-            android:id="@+id/editTextObs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/obs"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewObs" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

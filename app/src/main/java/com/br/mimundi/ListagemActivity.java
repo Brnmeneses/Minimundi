@@ -62,13 +62,14 @@ public class ListagemActivity extends AppCompatActivity {
                 String marca =  bundle.getString(MainActivity.MARCA);
                 String modelo = bundle.getString(MainActivity.MODELO);
                 String cor =  bundle.getString(MainActivity.COR);
-                String serie =  bundle.getString(MainActivity.SERIE);
+                String ano =  bundle.getString(MainActivity.ANO);
+                String loose =  bundle.getString(MainActivity.LOOSE);
                 String raridade =  bundle.getString(MainActivity.RARIDADE);
 
                 ArrayList<Miniatura> miniaturaList = new ArrayList<>();
 
                 if(requestCode == MainActivity.NOVO){
-                    miniaturaList.add(new Miniatura(fabricante, marca, modelo, "2021",cor));
+                    miniaturaList.add(new Miniatura(fabricante, marca, modelo, ano, cor, loose.equals("T") ? true : false, raridade));
                 } else if(requestCode == MainActivity.ALTERAR){
                     index = Integer.parseInt(bundle.getString(MainActivity.ID));
                     for (Miniatura m : miniaturaListTela) {
@@ -76,7 +77,7 @@ public class ListagemActivity extends AppCompatActivity {
                             miniaturaListTela.remove(m);
                         }
                     }
-                    miniaturaList.add(new Miniatura(index, fabricante, marca, modelo, "2021",cor));
+                    miniaturaList.add(new Miniatura(index, fabricante, marca, modelo, ano, cor, loose.equals("T") ? true : false, raridade));
                 }
                 miniaturaListTela.addAll(miniaturaList);
 
@@ -141,6 +142,9 @@ public class ListagemActivity extends AppCompatActivity {
         intent.putExtra(MainActivity.MARCA, miniatura.getMarca());
         intent.putExtra(MainActivity.MODELO, miniatura.getModelo());
         intent.putExtra(MainActivity.COR, miniatura.getCor());
+        intent.putExtra(MainActivity.ANO, miniatura.getAno());
+        intent.putExtra(MainActivity.LOOSE, miniatura.getStringLoose());
+        intent.putExtra(MainActivity.RARIDADE, miniatura.getRaridade());
 
         startActivityForResult(intent, MainActivity.ALTERAR);
     }
