@@ -51,14 +51,13 @@ public class ListagemActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,
                                     int resultCode,
                                     @Nullable Intent data) {
-        if ((requestCode == MainActivity.NOVO
-        || requestCode == MainActivity.ALTERAR)
-                && resultCode == Activity.RESULT_OK) {
+        if(resultCode == Activity.RESULT_OK){
 
             Bundle bundle = data.getExtras();
+
             if (bundle != null) {
 
-
+                int index = -1;
                 String fabricante = bundle.getString(MainActivity.FABRICANTE);
                 String marca =  bundle.getString(MainActivity.MARCA);
                 String modelo = bundle.getString(MainActivity.MODELO);
@@ -66,10 +65,19 @@ public class ListagemActivity extends AppCompatActivity {
                 String serie =  bundle.getString(MainActivity.SERIE);
                 String raridade =  bundle.getString(MainActivity.RARIDADE);
 
-
                 ArrayList<Miniatura> miniaturaList = new ArrayList<>();
-                miniaturaList.add(new Miniatura(fabricante, marca, modelo, "2021",cor));
 
+                if(requestCode == MainActivity.NOVO){
+                    miniaturaList.add(new Miniatura(fabricante, marca, modelo, "2021",cor));
+                } else if(requestCode == MainActivity.ALTERAR){
+                    index = Integer.parseInt(bundle.getString(MainActivity.ID));
+                    for (Miniatura m : miniaturaListTela) {
+                        if(m.getId() == index){
+                            miniaturaListTela.remove(m);
+                        }
+                    }
+                    miniaturaList.add(new Miniatura(index, fabricante, marca, modelo, "2021",cor));
+                }
                 miniaturaListTela.addAll(miniaturaList);
 
                 popularLista(miniaturaListTela);
@@ -78,6 +86,7 @@ public class ListagemActivity extends AppCompatActivity {
                         getString(R.string.sucesso),
                         Toast.LENGTH_LONG).show();
             }
+
         }
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -127,14 +136,13 @@ public class ListagemActivity extends AppCompatActivity {
         Intent intent = new Intent(this,
                 MainActivity.class);
 
+        intent.putExtra(MainActivity.ID, String.valueOf(miniatura.getId()));
         intent.putExtra(MainActivity.FABRICANTE, miniatura.getFabricante());
         intent.putExtra(MainActivity.MARCA, miniatura.getMarca());
         intent.putExtra(MainActivity.MODELO, miniatura.getModelo());
         intent.putExtra(MainActivity.COR, miniatura.getCor());
 
         startActivityForResult(intent, MainActivity.ALTERAR);
-
-        excluir(posicao);
     }
 
     private void excluir(int posicao){

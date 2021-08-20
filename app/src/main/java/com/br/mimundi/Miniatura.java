@@ -17,6 +17,15 @@ public class Miniatura {
         return random.nextInt((max - min) + 1) + min;
     }
 
+    public Miniatura(int id, String fabricante, String marca, String modelo, String ano, String cor) {
+        this.id = id;
+        setFabricante(fabricante);
+        setMarca(marca);
+        setModelo(modelo);
+        setAno(ano);
+        setCor(cor);
+    }
+
     public Miniatura(String fabricante, String marca, String modelo, String ano, String cor) {
         setId();
         setFabricante(fabricante);
@@ -72,7 +81,7 @@ public class Miniatura {
 
     @Override
     public String toString() {
-        return  //getId() + " - " +
+        return  getId() + " - " +
                 getFabricante() + " " +
                 getMarca() + " " +
                 getModelo() + " " +

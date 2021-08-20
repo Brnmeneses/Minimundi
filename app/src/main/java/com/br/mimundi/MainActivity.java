@@ -17,9 +17,6 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerFabricante, spinnerMarcas, spinnerModelos, spinnerCores;
@@ -27,13 +24,16 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbLoose;
     private RadioGroup radioGroupRaridade;
 
-    private int    modo;
+    private int    modo = 1;
+    private String editId;
     private String editFabricante;
     private String editMarca;
     private String editModelo;
     private String editCor;
 
-    public static final String IDENTIFICADOR = "IDENTIFICADOR";
+    private Boolean flagOnItemSelectedListener = true;
+
+    public static final String ID = "ID";
     public static final String FABRICANTE = "FABRICANTE";
     public static final String MARCA = "MARCA";
     public static final String MODELO = "MODELO";
@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(activity, ListagemActivity.class);
 
-        intent.putExtra(MODO, ALTERAR);
+        //intent.putExtra(MODO, ALTERAR);
+        intent.putExtra(ID, miniatura.getId());
         intent.putExtra(FABRICANTE, miniatura.getFabricante());
         intent.putExtra(MARCA, miniatura.getMarca());
         intent.putExtra(MODELO, miniatura.getFabricante());
@@ -68,6 +69,71 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(RARIDADE, miniatura.get);*/
 
         activity.startActivityForResult(intent, ALTERAR);
+    }
+
+    private int retornaArrayModelo(String marca) {
+
+        if (marca.equals(getString(R.string.audi))) {
+            return R.array.modelos_audi;
+        } else if (marca.equals(getString(R.string.bmw))) {
+            return R.array.modelos_bmw;
+        } else if (marca.equals(getString(R.string.chevrolet))) {
+            return R.array.modelos_chevrolet;
+        } else if (marca.equals(getString(R.string.citroen))) {
+            return R.array.modelos_citroen;
+        } else if (marca.equals(getString(R.string.dodge))) {
+            return R.array.modelos_dodge;
+        } else if (marca.equals(getString(R.string.ferrari))) {
+            return R.array.modelos_ferrari;
+        } else if (marca.equals(getString(R.string.fiat))) {
+            return R.array.modelos_fiat;
+        } else if (marca.equals(getString(R.string.ford))) {
+            return R.array.modelos_ford;
+        } else if (marca.equals(getString(R.string.gmc))) {
+            return R.array.modelos_gmc;
+        } else if (marca.equals(getString(R.string.honda))) {
+            return R.array.modelos_honda;
+        } else if (marca.equals(getString(R.string.hyundai))) {
+            return R.array.modelos_hyundai;
+        } else if (marca.equals(getString(R.string.jaguar))) {
+            return R.array.modelos_jaguar;
+        } else if (marca.equals(getString(R.string.kia))) {
+            return R.array.modelos_kia;
+        } else if (marca.equals(getString(R.string.lamborghini))) {
+            return R.array.modelos_lamborghini;
+        } else if (marca.equals(getString(R.string.lancia))) {
+            return R.array.modelos_lancia;
+        } else if (marca.equals(getString(R.string.land_rover))) {
+            return R.array.modelos_land_rover;
+        } else if (marca.equals(getString(R.string.mazda))) {
+            return R.array.modelos_mazda;
+        } else if (marca.equals(getString(R.string.mclaren))) {
+            return R.array.modelos_mclaren;
+        } else if (marca.equals(getString(R.string.mercedes))) {
+            return R.array.modelos_mercedes;
+        } else if (marca.equals(getString(R.string.mini))) {
+            return R.array.modelos_mini;
+        } else if (marca.equals(getString(R.string.nissan))) {
+            return R.array.modelos_nissan;
+        } else if (marca.equals(getString(R.string.peugeot))) {
+            return R.array.modelos_peugeot;
+        } else if (marca.equals(getString(R.string.plymouth))) {
+            return R.array.modelos_plymonth;
+        } else if (marca.equals(getString(R.string.porsche))) {
+            return R.array.modelos_porsche;
+        } else if (marca.equals(getString(R.string.subaru))) {
+            return R.array.modelos_subaru;
+        } else if (marca.equals(getString(R.string.tesla))) {
+            return R.array.modelos_tesla;
+        } else if (marca.equals(getString(R.string.toyota))) {
+            return R.array.modelos_toyota;
+        } else if (marca.equals(getString(R.string.volkswagen))) {
+            return R.array.modelos_volskwagen;
+        } else if (marca.equals(getString(R.string.volvo))) {
+            return R.array.modelos_volvo;
+        } else
+            return R.array.modelos_na;
+
     }
 
     @Override
@@ -92,9 +158,9 @@ public class MainActivity extends AppCompatActivity {
         if (bundle != null){
 
             modo = bundle.getInt(MODO, ALTERAR);
-            System.out.println("modo: "+modo);
             setTitle(getString(R.string.alterar_miniatura));
 
+            editId = bundle.getString(ID);
             editFabricante = bundle.getString(FABRICANTE);
             editMarca = bundle.getString(MARCA);
             editModelo = bundle.getString(MODELO);
@@ -102,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
             popularEditFabricante(editFabricante);
             popularEditMarca(editMarca);
-            popularEditModelo(editModelo);
+            popularEditModelo(editMarca, editModelo);
             popularEditCor(editCor);
 
 
@@ -110,87 +176,22 @@ public class MainActivity extends AppCompatActivity {
             setTitle(getString(R.string.nova_miniatura));
         }
 
+        if(modo == NOVO || flagOnItemSelectedListener){
 
-        spinnerMarcas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                String marca = adapterView.getItemAtPosition(i).toString();
-
-                if (marca.equals(getString(R.string.audi))) {
-                    popularModelos(R.array.modelos_audi);
-                } else if (marca.equals(getString(R.string.bmw))) {
-                    popularModelos(R.array.modelos_bmw);
-                } else if (marca.equals(getString(R.string.chevrolet))) {
-                    popularModelos(R.array.modelos_chevrolet);
-                } else if (marca.equals(getString(R.string.citroen))) {
-                    popularModelos(R.array.modelos_citroen);
-                } else if (marca.equals(getString(R.string.dodge))) {
-                    popularModelos(R.array.modelos_dodge);
-                } else if (marca.equals(getString(R.string.ferrari))) {
-                    popularModelos(R.array.modelos_ferrari);
-                } else if (marca.equals(getString(R.string.fiat))) {
-                    popularModelos(R.array.modelos_fiat);
-                } else if (marca.equals(getString(R.string.ford))) {
-                    popularModelos(R.array.modelos_ford);
-                } else if (marca.equals(getString(R.string.gmc))) {
-                    popularModelos(R.array.modelos_gmc);
-                } else if (marca.equals(getString(R.string.honda))) {
-                    popularModelos(R.array.modelos_honda);
-                } else if (marca.equals(getString(R.string.hyundai))) {
-                    popularModelos(R.array.modelos_hyundai);
-                } else if (marca.equals(getString(R.string.jaguar))) {
-                    popularModelos(R.array.modelos_jaguar);
-/*                } else if (marca.equals(getString(R.string.jeep))) {
-                    popularModelos(R.array.modelos_jeep);*/
-                } else if (marca.equals(getString(R.string.kia))) {
-                    popularModelos(R.array.modelos_kia);
-                } else if (marca.equals(getString(R.string.lamborghini))) {
-                    popularModelos(R.array.modelos_lamborghini);
-                } else if (marca.equals(getString(R.string.lancia))) {
-                    popularModelos(R.array.modelos_lancia);
-                } else if (marca.equals(getString(R.string.land_rover))) {
-                    popularModelos(R.array.modelos_land_rover);
-                } else if (marca.equals(getString(R.string.mazda))) {
-                    popularModelos(R.array.modelos_mazda);
-                } else if (marca.equals(getString(R.string.mclaren))) {
-                    popularModelos(R.array.modelos_mclaren);
-                } else if (marca.equals(getString(R.string.mercedes))) {
-                    popularModelos(R.array.modelos_mercedes);
-                } else if (marca.equals(getString(R.string.mini))) {
-                    popularModelos(R.array.modelos_mini);
-/*                } else if (marca.equals(getString(R.string.mitsubishi))) {
-                    popularModelos(R.array.modelos_mitsubishi); */
-                } else if (marca.equals(getString(R.string.n_a))) {
-                    popularModelos(R.array.modelos_na);
-                } else if (marca.equals(getString(R.string.nissan))) {
-                    popularModelos(R.array.modelos_nissan);
-                } else if (marca.equals(getString(R.string.peugeot))) {
-                    popularModelos(R.array.modelos_peugeot);
-                } else if (marca.equals(getString(R.string.plymouth))) {
-                    popularModelos(R.array.modelos_plymonth);
-                } else if (marca.equals(getString(R.string.porsche))) {
-                    popularModelos(R.array.modelos_porsche);
-/*                } else if (marca.equals(getString(R.string.renault))) {
-                    popularModelos(R.array.modelos_renault); */
-                } else if (marca.equals(getString(R.string.subaru))) {
-                    popularModelos(R.array.modelos_subaru);
-                } else if (marca.equals(getString(R.string.tesla))) {
-                    popularModelos(R.array.modelos_tesla);
-                } else if (marca.equals(getString(R.string.toyota))) {
-                    popularModelos(R.array.modelos_toyota);
-                } else if (marca.equals(getString(R.string.volkswagen))) {
-                    popularModelos(R.array.modelos_volskwagen);
-                } else if (marca.equals(getString(R.string.volvo))) {
-                    popularModelos(R.array.modelos_volvo);
+            spinnerMarcas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    String marca = adapterView.getItemAtPosition(i).toString();
+                    popularModelos(retornaArrayModelo(marca));
                 }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
+                }
+            });
+        }
+        flagOnItemSelectedListener = true;
     }
 
     private void popularEditFabricante(String editFabricante) {
@@ -206,24 +207,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void popularEditMarca(String editMarca) {
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add(editMarca);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
-        spinnerMarcas.setAdapter(adapter);
+        String[] marcasArray = getResources().getStringArray(R.array.marcas);
+        int index = 0;
+
+        for (int i = 0;i <marcasArray.length;i++){
+            if(marcasArray[i].equals(editMarca)) {
+                index = i;
+            }
+        }
+        spinnerMarcas.setSelection(index);
     }
 
-    private void popularEditModelo(String editModelo) {
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add(editModelo);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
-        spinnerModelos.setAdapter(adapter);
+    private void popularEditModelo(String editMarca, String editModelo) {
+
+        popularModelos(retornaArrayModelo(editMarca));
+        String[] modelosArray = getResources().getStringArray(retornaArrayModelo(editMarca));
+        int index = 0;
+
+        for (int i = 0;i <modelosArray.length;i++){
+            if(modelosArray[i].equals(editModelo)) {
+                index = i;
+            }
+        }
+        spinnerModelos.setSelection(index);
+        flagOnItemSelectedListener = false;
     }
 
     private void popularEditCor(String editCor) {
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add(editCor);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
-        spinnerCores.setAdapter(adapter);
+        String[] coresArray = getResources().getStringArray(R.array.cores);
+        int index = 0;
+
+        for (int i = 0;i <coresArray.length;i++){
+            if(coresArray[i].equals(editCor)) {
+                index = i;
+            }
+        }
+        spinnerCores.setSelection(index);
     }
 
     private void popularModelos(int arrayId) {
@@ -264,6 +283,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent();
 
+        if(editId != null){
+            intent.putExtra(ID, editId);
+        }
         intent.putExtra(FABRICANTE, fabricante);
         intent.putExtra(MARCA, marca);
         intent.putExtra(MODELO, modelo);
@@ -277,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void cancelar(){
+/*    public void cancelar(){
         setResult(Activity.RESULT_CANCELED);
         finish();
     }
@@ -285,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         cancelar();
-    }
+    }*/
 
     public void limparCampos(){
 
