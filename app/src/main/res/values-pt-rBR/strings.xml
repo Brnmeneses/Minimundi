@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minimundi</string>
+
+    <string name="fabricante">Fabricante</string>
+    <string name="novo_cadastro">Novo Cadastro</string>
+    <string name="marca">Marca</string>
+    <string name="modelo">Modelo</string>
+    <string name="ano">Ano</string>
+    <string name="serie">Série</string>
+    <string name="cor">Cor</string>
+
+    <!--Cores-->
+    <string name="amarelo">Amarelo</string>
+    <string name="azul">Azul</string>
+    <string name="bege">Bege</string>
+    <string name="branco">Branco</string>
+    <string name="cinza">Cinza</string>
+    <string name="laranja">Laranja</string>
+    <string name="lilas">Lilas</string>
+    <string name="marrom">Marrom</string>
+    <string name="preto">Preto</string>
+    <string name="rosa">Rosa</string>
+    <string name="roxo">Roxo</string>
+    <string name="verde">Verde</string>
+    <string name="vermelho">Vermelho</string>
+    <string name="vinho">Vinho</string>
+
+
+    <string name="raridade">Raridade</string>
+    <string name="comum">Comum</string>
+    <string name="raro">Raro</string>
+    <string name="thunt">T-Hunted</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="limpar">Limpar</string>
+    <string name="limpar_campos">Campos Limpos</string>
+    <string name="hint_serie">Série</string>
+    <string name="loose">Loose?</string>
+    <string name="hint_ano">Ano</string>
+    <string name="nome">Nome</string>
+    <string name="obs">Observação</string>
+    <string name="foi_clicado">foi clicado</string>
+
+    <!--Anos-->
+    <string name="curso">Especialização JAVA XX</string>
+    <string name="bio">Aplicativo desenvolvido pensando em facilitar ao colecionador manter os dados atualizados de sua coleção</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="autoria">Autoria</string>
+    <string name="salvar">Salvar</string>
+    <string name="sucesso">Salvo com sucesso</string>
+    <string name="sobre">Sobre</string>
+    <string name="adcionar">Adcionar</string>
+    <string name="listagem">" Minha Coleção"</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
+    <string name="nova_miniatura">Nova Miniatura</string>
+    <string name="alterar_miniatura">Alterar Miniatura</string>
+    <string name="na_embaladao">Embalagem Original</string>
+</resources>

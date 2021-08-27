@@ -357,11 +357,11 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menuItemSalvar:
                 salvar();
-                mostrarMensagem("Salvar");
+                mostrarMensagem(getString(R.string.salvar));
                 return true;
             case R.id.menuItemLimpar:
                 limparCampos();
-                mostrarMensagem("Limpar");
+                mostrarMensagem(getString(R.string.limpar));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

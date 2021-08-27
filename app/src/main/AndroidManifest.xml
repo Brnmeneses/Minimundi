@@ -14,9 +14,6 @@
             android:parentActivityName=".ListagemActivity"
             android:exported="true" />
         <activity
-            android:name=".PrincipalActivity"
-            android:exported="true" />
-        <activity
             android:name=".AutoriaActivity"
             android:parentActivityName=".ListagemActivity"
             android:exported="true" />
