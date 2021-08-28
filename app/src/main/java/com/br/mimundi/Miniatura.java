@@ -2,7 +2,7 @@ package com.br.mimundi;
 
 import java.util.Random;
 
-public class Miniatura {
+public class Miniatura implements Comparable {
 
     private int    id;
     private String fabricante;
@@ -97,12 +97,29 @@ public class Miniatura {
 
     @Override
     public String toString() {
-        return  //getId() + " - " +
+        return  "(" + getId() + ") - " +
                 getFabricante() + " " +
                 getMarca() + " " +
                 getModelo() + " " +
                 getAno()  + " " +
                 getCor();
 
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+
+        Miniatura mini = (Miniatura) o;
+
+        if(getId() > mini.getId()){
+            return 1;
+        }else{
+            if(getId() < mini.getId()){
+                return -1;
+            }else{
+                return 0;
+            }
+        }
     }
 }

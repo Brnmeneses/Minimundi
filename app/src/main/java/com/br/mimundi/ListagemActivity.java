@@ -1,11 +1,10 @@
 package com.br.mimundi;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -16,15 +15,51 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ListagemActivity extends AppCompatActivity {
 
-    private ListView listViewMiniaturas;
+    private static final String ARQUIVO =
+            "com.br.sharedpreferences.PREFERENCIAS";
+    private static final String PROPS = "PROPS";
+    private int opcao = 0;
+    private ConstraintLayout layout;
 
-    private ArrayList<Miniatura> miniaturaListTela = new ArrayList<>();
+    private ListView listViewMiniaturas;
+    private List<Miniatura> miniaturaListTela = new ArrayList<>();
     private ArrayAdapter<Miniatura> adapter;
+
+
+    private void lerPreferencias(){
+        SharedPreferences shared = getSharedPreferences(
+                ARQUIVO,
+                Context.MODE_PRIVATE);
+
+        opcao = shared.getInt(PROPS, opcao);
+    }
+
+    private void salvarPreferencias(int valor){
+
+        opcao = valor;
+
+        SharedPreferences shared = getSharedPreferences(
+                ARQUIVO,
+                Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = shared.edit();
+
+        editor.putInt(PROPS, valor);
+
+        editor.commit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +69,20 @@ public class ListagemActivity extends AppCompatActivity {
         listViewMiniaturas = findViewById(R.id.listViewMiniatura);
 
         registerForContextMenu(listViewMiniaturas);
+
+        lerPreferencias();
+        popularLista(miniaturaListTela);
+
     }
 
-    private void popularLista(ArrayList<Miniatura> miniaturaList) {
+    private void popularLista(List<Miniatura> miniaturaList) {
+
+        if (opcao == 1) {
+            Collections.sort(miniaturaListTela);
+        } else {
+            Collections.reverse(miniaturaListTela);
+        }
+
         adapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_expandable_list_item_1,
@@ -51,7 +97,7 @@ public class ListagemActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,
                                     int resultCode,
                                     @Nullable Intent data) {
-        if(resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
 
             Bundle bundle = data.getExtras();
 
@@ -59,26 +105,27 @@ public class ListagemActivity extends AppCompatActivity {
 
                 int index = -1;
                 String fabricante = bundle.getString(MainActivity.FABRICANTE);
-                String marca =  bundle.getString(MainActivity.MARCA);
+                String marca = bundle.getString(MainActivity.MARCA);
                 String modelo = bundle.getString(MainActivity.MODELO);
-                String cor =  bundle.getString(MainActivity.COR);
-                String ano =  bundle.getString(MainActivity.ANO);
-                String loose =  bundle.getString(MainActivity.LOOSE);
-                String raridade =  bundle.getString(MainActivity.RARIDADE);
+                String cor = bundle.getString(MainActivity.COR);
+                String ano = bundle.getString(MainActivity.ANO);
+                String loose = bundle.getString(MainActivity.LOOSE);
+                String raridade = bundle.getString(MainActivity.RARIDADE);
 
                 ArrayList<Miniatura> miniaturaList = new ArrayList<>();
 
-                if(requestCode == MainActivity.NOVO){
+                if (requestCode == MainActivity.NOVO) {
                     miniaturaList.add(new Miniatura(fabricante, marca, modelo, ano, cor, loose.equals("T") ? true : false, raridade));
-                } else if(requestCode == MainActivity.ALTERAR){
+                } else if (requestCode == MainActivity.ALTERAR) {
                     index = Integer.parseInt(bundle.getString(MainActivity.ID));
                     for (Miniatura m : miniaturaListTela) {
-                        if(m.getId() == index){
+                        if (m.getId() == index) {
                             miniaturaListTela.remove(m);
                         }
                     }
                     miniaturaList.add(new Miniatura(index, fabricante, marca, modelo, ano, cor, loose.equals("T") ? true : false, raridade));
                 }
+
                 miniaturaListTela.addAll(miniaturaList);
 
                 popularLista(miniaturaListTela);
@@ -99,39 +146,49 @@ public class ListagemActivity extends AppCompatActivity {
         return true;
     }
 
-    private void mostrarMensagem(String mensagem){
-        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem item;
+        item = menu.findItem(R.id.menuItemSort);
+        item.setChecked(opcao == 1 ? true : false);
+        return true;
     }
 
-    private void mostrarDadosSobre(){
+    private void mostrarDadosSobre() {
         Intent intent = new Intent(this,
                 AutoriaActivity.class);
 
         startActivity(intent);
     }
 
-    private void mostrarCadastrarNovo(){
+    private void mostrarCadastrarNovo() {
         Intent intent = new Intent(this,
                 MainActivity.class);
 
-        startActivityForResult(intent,MainActivity.NOVO);
+        startActivityForResult(intent, MainActivity.NOVO);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuItemAdicionar:
                 mostrarCadastrarNovo();
                 return true;
             case R.id.menuItemSobre:
                 mostrarDadosSobre();
                 return true;
+            case R.id.menuItemSort:
+                Boolean chk = item.isChecked();
+                salvarPreferencias(chk ? 0 : 1);
+                item.setChecked(!chk);
+                popularLista(miniaturaListTela);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void alterar(int posicao){
+    private void alterar(int posicao) {
         Miniatura miniatura = miniaturaListTela.get(posicao);
 
         Intent intent = new Intent(this,
@@ -149,7 +206,7 @@ public class ListagemActivity extends AppCompatActivity {
         startActivityForResult(intent, MainActivity.ALTERAR);
     }
 
-    private void excluir(int posicao){
+    private void excluir(int posicao) {
         miniaturaListTela.remove(posicao);
         popularLista(miniaturaListTela);
         adapter.notifyDataSetChanged();
@@ -172,7 +229,7 @@ public class ListagemActivity extends AppCompatActivity {
 
         info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuItemAlterar:
                 alterar(info.position);
                 return true;

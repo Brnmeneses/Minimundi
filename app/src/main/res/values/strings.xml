@@ -235,5 +235,6 @@
 
     <!--Volvo-->
     <string name="_850_estate" translatable="false">850 Estate</string>
+    <string name="sort">Sort</string>
 
 </resources>

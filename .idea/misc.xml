@@ -6,9 +6,12 @@
         <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/layout/activity_autoria.xml" value="0.33" />
         <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/layout/activity_listagem.xml" value="0.25" />
         <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/layout/activity_principal.xml" value="0.209375" />
         <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/menu/cadastro_opcoes.xml" value="0.25" />
+        <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/menu/principal_item_selecionado.xml" value="0.209375" />
         <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/menu/principal_menu_contexto.xml" value="0.33" />
         <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/menu/principal_opcoes.xml" value="0.33" />
+        <entry key="..\:/Projeto/apps/Minimundi/app/src/main/res/menu/principal_preferencias.xml" value="0.25" />
       </map>
     </option>
   </component>
