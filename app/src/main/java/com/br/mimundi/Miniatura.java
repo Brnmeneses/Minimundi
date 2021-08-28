@@ -97,7 +97,7 @@ public class Miniatura implements Comparable {
 
     @Override
     public String toString() {
-        return  "(" + getId() + ") - " +
+        return  //"(" + getId() + ") - " +
                 getFabricante() + " " +
                 getMarca() + " " +
                 getModelo() + " " +
@@ -106,20 +106,16 @@ public class Miniatura implements Comparable {
 
     }
 
-
     @Override
     public int compareTo(Object o) {
 
         Miniatura mini = (Miniatura) o;
 
-        if(getId() > mini.getId()){
-            return 1;
-        }else{
-            if(getId() < mini.getId()){
-                return -1;
-            }else{
-                return 0;
-            }
+        int compAlfabetica = getMarca().compareToIgnoreCase(mini.getMarca());
+        if (compAlfabetica == 0) {
+            return getModelo().compareToIgnoreCase(mini.getModelo());
         }
+        return compAlfabetica;
+
     }
 }
