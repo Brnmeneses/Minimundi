@@ -1,10 +1,18 @@
 package com.br.mimundi;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Random;
 
+@Entity
 public class Miniatura implements Comparable {
 
-    private int    id;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @NonNull
     private String fabricante;
     private String marca;
     private String modelo;
@@ -13,14 +21,17 @@ public class Miniatura implements Comparable {
     private Boolean loose;
     private String raridade;
 
-    public static int getRandomInt(int min, int max) {
+/*    public static int getRandomInt(int min, int max) {
         Random random = new Random();
 
         return random.nextInt((max - min) + 1) + min;
+    }*/
+
+    public Miniatura() {
     }
 
     public Miniatura(int id, String fabricante, String marca, String modelo, String ano, String cor, Boolean loose, String raridade) {
-        this.id = id;
+        setId(id);
         setFabricante(fabricante);
         setMarca(marca);
         setModelo(modelo);
@@ -31,7 +42,6 @@ public class Miniatura implements Comparable {
     }
 
     public Miniatura(String fabricante, String marca, String modelo, String ano, String cor, Boolean loose, String raridade) {
-        setId();
         setFabricante(fabricante);
         setMarca(marca);
         setModelo(modelo);
@@ -41,9 +51,13 @@ public class Miniatura implements Comparable {
         setRaridade(raridade);
     }
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
-    public void setId() {this.id = getRandomInt(1,100);}
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFabricante() {
         return fabricante;
@@ -85,24 +99,34 @@ public class Miniatura implements Comparable {
         this.cor = cor;
     }
 
-    public Boolean getLoose() { return loose; }
+    public Boolean getLoose() {
+        return loose;
+    }
 
-    public String getStringLoose() { return loose ? "T" : "F"; }
+    public String getStringLoose() {
+        return loose ? "T" : "F";
+    }
 
-    public void setLoose(Boolean loose) { this.loose = loose; }
+    public void setLoose(Boolean loose) {
+        this.loose = loose;
+    }
 
-    public String getRaridade() { return raridade; }
+    public String getRaridade() {
+        return raridade;
+    }
 
-    public void setRaridade(String raridade) {  this.raridade = raridade; }
+    public void setRaridade(String raridade) {
+        this.raridade = raridade;
+    }
 
     @Override
     public String toString() {
-        return  //"(" + getId() + ") - " +
+        return  "(" + getId() + ") - " +
                 getFabricante() + " " +
-                getMarca() + " " +
-                getModelo() + " " +
-                getAno()  + " " +
-                getCor();
+                        getMarca() + " " +
+                        getModelo() + " " +
+                        getAno() + " " +
+                        getCor();
 
     }
 

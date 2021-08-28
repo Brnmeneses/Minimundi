@@ -35,6 +35,7 @@ public class ListagemActivity extends AppCompatActivity {
 
     private ListView listViewMiniaturas;
     private List<Miniatura> miniaturaListTela = new ArrayList<>();
+    private List<Miniatura> databaseList = new ArrayList<>();
     private ArrayAdapter<Miniatura> adapter;
 
 
@@ -77,16 +78,20 @@ public class ListagemActivity extends AppCompatActivity {
 
     private void popularLista(List<Miniatura> miniaturaList) {
 
+        MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
+
+        databaseList = database.miniaturaDAO().queryAll();
+
         if (opcao == 1) {
-            Collections.sort(miniaturaListTela);
+            Collections.sort(databaseList);
         } else {
-            Collections.reverse(miniaturaListTela);
+            Collections.reverse(databaseList);
         }
 
         adapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_expandable_list_item_1,
-                        miniaturaList);
+                        databaseList);
 
         adapter.notifyDataSetChanged();
 
@@ -189,7 +194,8 @@ public class ListagemActivity extends AppCompatActivity {
     }
 
     private void alterar(int posicao) {
-        Miniatura miniatura = miniaturaListTela.get(posicao);
+
+        Miniatura miniatura = databaseList.get(posicao);
 
         Intent intent = new Intent(this,
                 MainActivity.class);
@@ -207,7 +213,11 @@ public class ListagemActivity extends AppCompatActivity {
     }
 
     private void excluir(int posicao) {
-        miniaturaListTela.remove(posicao);
+
+        Miniatura miniatura = databaseList.get(posicao);
+        MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
+        database.miniaturaDAO().delete(miniatura);
+
         popularLista(miniaturaListTela);
         adapter.notifyDataSetChanged();
     }

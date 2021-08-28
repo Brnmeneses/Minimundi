@@ -28,6 +28,15 @@ android {
 }
 
 dependencies {
+/*    def rom_version = "1.1.1"
+
+    implementation "android.arch.persistence.rom:runtime:$rom_version"
+    annotationProcessor "android.arch.persistence.rom:compiler:$rom_version"*/
+
+    def room_version = "2.3.0"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'

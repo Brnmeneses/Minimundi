@@ -315,6 +315,22 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(RARIDADE, raridade);
 
         intent.getAction();
+
+
+        MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
+
+        database.miniaturaDAO().insert(
+                new Miniatura(
+                        fabricante,
+                        marca,
+                        modelo,
+                        ano,
+                        cor,
+                        cbLoose.isChecked(),
+                        raridade
+                )
+        );
+
         setResult(Activity.RESULT_OK, intent);
 
         finish();
