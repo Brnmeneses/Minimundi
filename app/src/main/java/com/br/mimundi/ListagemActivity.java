@@ -2,6 +2,7 @@ package com.br.mimundi;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.br.mimundi.utils.UtilsGUI;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,11 +75,11 @@ public class ListagemActivity extends AppCompatActivity {
         registerForContextMenu(listViewMiniaturas);
 
         lerPreferencias();
-        popularLista(miniaturaListTela);
+        popularLista();
 
     }
 
-    private void popularLista(List<Miniatura> miniaturaList) {
+    private void popularLista() {
 
         MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
 
@@ -104,41 +107,11 @@ public class ListagemActivity extends AppCompatActivity {
                                     @Nullable Intent data) {
         if (resultCode == Activity.RESULT_OK) {
 
-            Bundle bundle = data.getExtras();
+            popularLista();
 
-            if (bundle != null) {
-
-                int index = -1;
-                String fabricante = bundle.getString(MainActivity.FABRICANTE);
-                String marca = bundle.getString(MainActivity.MARCA);
-                String modelo = bundle.getString(MainActivity.MODELO);
-                String cor = bundle.getString(MainActivity.COR);
-                String ano = bundle.getString(MainActivity.ANO);
-                String loose = bundle.getString(MainActivity.LOOSE);
-                String raridade = bundle.getString(MainActivity.RARIDADE);
-
-                ArrayList<Miniatura> miniaturaList = new ArrayList<>();
-
-                if (requestCode == MainActivity.NOVO) {
-                    miniaturaList.add(new Miniatura(fabricante, marca, modelo, ano, cor, loose.equals("T") ? true : false, raridade));
-                } else if (requestCode == MainActivity.ALTERAR) {
-                    index = Integer.parseInt(bundle.getString(MainActivity.ID));
-                    for (Miniatura m : miniaturaListTela) {
-                        if (m.getId() == index) {
-                            miniaturaListTela.remove(m);
-                        }
-                    }
-                    miniaturaList.add(new Miniatura(index, fabricante, marca, modelo, ano, cor, loose.equals("T") ? true : false, raridade));
-                }
-
-                miniaturaListTela.addAll(miniaturaList);
-
-                popularLista(miniaturaListTela);
-
-                Toast.makeText(this,
-                        getString(R.string.sucesso),
-                        Toast.LENGTH_LONG).show();
-            }
+            Toast.makeText(this,
+                    getString(R.string.sucesso),
+                    Toast.LENGTH_LONG).show();
 
         }
 
@@ -186,7 +159,7 @@ public class ListagemActivity extends AppCompatActivity {
                 Boolean chk = item.isChecked();
                 salvarPreferencias(chk ? 0 : 1);
                 item.setChecked(!chk);
-                popularLista(miniaturaListTela);
+                popularLista();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -201,25 +174,39 @@ public class ListagemActivity extends AppCompatActivity {
                 MainActivity.class);
 
         intent.putExtra(MainActivity.ID, String.valueOf(miniatura.getId()));
-/*        intent.putExtra(MainActivity.FABRICANTE, miniatura.getFabricante());
-        intent.putExtra(MainActivity.MARCA, miniatura.getMarca());
-        intent.putExtra(MainActivity.MODELO, miniatura.getModelo());
-        intent.putExtra(MainActivity.COR, miniatura.getCor());
-        intent.putExtra(MainActivity.ANO, miniatura.getAno());
-        intent.putExtra(MainActivity.LOOSE, miniatura.getStringLoose());
-        intent.putExtra(MainActivity.RARIDADE, miniatura.getRaridade());*/
 
         startActivityForResult(intent, MainActivity.ALTERAR);
     }
 
     private void excluir(int posicao) {
 
-        Miniatura miniatura = databaseList.get(posicao);
-        MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
-        database.miniaturaDAO().delete(miniatura);
+        String mensagem = getString(R.string.please_confirm);
 
-        popularLista(miniaturaListTela);
-        adapter.notifyDataSetChanged();
+        DialogInterface.OnClickListener listener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch(which){
+                            case DialogInterface.BUTTON_POSITIVE:
+
+                                Miniatura miniatura = databaseList.get(posicao);
+                                MiniaturaDatabase database = MiniaturaDatabase.getDatabase(ListagemActivity.this);
+                                database.miniaturaDAO().delete(miniatura);
+
+                                popularLista();
+                                adapter.notifyDataSetChanged();
+
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+
+                                break;
+                        }
+                    }
+                };
+
+        UtilsGUI.confirmaAcao(this, mensagem, listener);
     }
 
     @Override

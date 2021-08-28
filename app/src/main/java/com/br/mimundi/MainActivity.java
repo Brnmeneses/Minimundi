@@ -1,12 +1,8 @@
 package com.br.mimundi;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +14,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerFabricante, spinnerMarcas, spinnerModelos, spinnerCores;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbLoose;
     private RadioGroup radioGroupRaridade;
 
-    private int    modo = 1;
+    private int modo = 1;
     private String editId;
     private String editFabricante;
     private String editMarca;
@@ -38,44 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private Boolean flagOnItemSelectedListener = true;
 
     public static final String ID = "ID";
-    public static final String FABRICANTE = "FABRICANTE";
-    public static final String MARCA = "MARCA";
-    public static final String MODELO = "MODELO";
-    public static final String COR = "COR";
-    public static final String ANO = "ANO";
-    public static final String LOOSE = "LOOSE";
-    public static final String RARIDADE = "RARIDADE";
 
-    public static final String MODO    = "MODO";
-    public static final int    NOVO    = 1;
-    public static final int    ALTERAR = 2;
-
-
-    public static void novaPessoa(AppCompatActivity activity){
-
-        Intent intent = new Intent(activity, ListagemActivity.class);
-
-        intent.putExtra(MODO, NOVO);
-
-        activity.startActivityForResult(intent, NOVO);
-    }
-
-    public static void alterarPessoa(AppCompatActivity activity, Miniatura miniatura){
-
-        Intent intent = new Intent(activity, ListagemActivity.class);
-
-        //intent.putExtra(MODO, ALTERAR);
-        intent.putExtra(ID, miniatura.getId());
-        intent.putExtra(FABRICANTE, miniatura.getFabricante());
-        intent.putExtra(MARCA, miniatura.getMarca());
-        intent.putExtra(MODELO, miniatura.getFabricante());
-        intent.putExtra(COR, miniatura.getCor());
-        intent.putExtra(ANO, miniatura.getAno());
-        intent.putExtra(LOOSE, miniatura.getStringLoose());
-        intent.putExtra(RARIDADE, miniatura.getRaridade());
-
-        activity.startActivityForResult(intent, ALTERAR);
-    }
+    public static final String MODO = "MODO";
+    public static final int NOVO = 1;
+    public static final int ALTERAR = 2;
 
     private int retornaArrayModelo(String marca) {
 
@@ -158,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        if (bundle != null){
+        if (bundle != null) {
 
             modo = bundle.getInt(MODO, ALTERAR);
             setTitle(getString(R.string.alterar_miniatura));
@@ -177,14 +142,6 @@ public class MainActivity extends AppCompatActivity {
             editAno = miniatura.getAno();
             editLoose = miniatura.getStringLoose();
             editRaridade = miniatura.getRaridade();
-
-/*            editFabricante = bundle.getString(FABRICANTE);
-            editMarca = bundle.getString(MARCA);
-            editModelo = bundle.getString(MODELO);
-            editCor = bundle.getString(COR);
-            editAno = bundle.getString(ANO);
-            editLoose = bundle.getString(LOOSE);
-            editRaridade = bundle.getString(RARIDADE);*/
 
             popularEditFabricante(editFabricante);
             popularEditMarca(editMarca);
@@ -209,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             setTitle(getString(R.string.nova_miniatura));
         }
 
-        if(modo == NOVO || flagOnItemSelectedListener){
+        if (modo == NOVO || flagOnItemSelectedListener) {
 
             spinnerMarcas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -231,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
         String[] fabricantesArray = getResources().getStringArray(R.array.fabricantes);
         int index = 0;
 
-        for (int i = 0;i <fabricantesArray.length;i++){
-            if(fabricantesArray[i].equals(editFabricante)) {
+        for (int i = 0; i < fabricantesArray.length; i++) {
+            if (fabricantesArray[i].equals(editFabricante)) {
                 index = i;
             }
         }
@@ -243,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
         String[] marcasArray = getResources().getStringArray(R.array.marcas);
         int index = 0;
 
-        for (int i = 0;i <marcasArray.length;i++){
-            if(marcasArray[i].equals(editMarca)) {
+        for (int i = 0; i < marcasArray.length; i++) {
+            if (marcasArray[i].equals(editMarca)) {
                 index = i;
             }
         }
@@ -257,8 +214,8 @@ public class MainActivity extends AppCompatActivity {
         String[] modelosArray = getResources().getStringArray(retornaArrayModelo(editMarca));
         int index = 0;
 
-        for (int i = 0;i <modelosArray.length;i++){
-            if(modelosArray[i].equals(editModelo)) {
+        for (int i = 0; i < modelosArray.length; i++) {
+            if (modelosArray[i].equals(editModelo)) {
                 index = i;
             }
         }
@@ -270,8 +227,8 @@ public class MainActivity extends AppCompatActivity {
         String[] coresArray = getResources().getStringArray(R.array.cores);
         int index = 0;
 
-        for (int i = 0;i <coresArray.length;i++){
-            if(coresArray[i].equals(editCor)) {
+        for (int i = 0; i < coresArray.length; i++) {
+            if (coresArray[i].equals(editCor)) {
                 index = i;
             }
         }
@@ -290,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerModelos.setAdapter(adapter);
     }
 
-    public void salvar(){
+    public void salvar() {
         String fabricante = (String) spinnerFabricante.getSelectedItem();
         String marca = (String) spinnerMarcas.getSelectedItem();
         String modelo = (String) spinnerModelos.getSelectedItem();
@@ -299,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
         String loose = cbLoose.isChecked() ? "T" : "F";
         String raridade = "comum";
 
-        switch (radioGroupRaridade.getCheckedRadioButtonId()){
+        switch (radioGroupRaridade.getCheckedRadioButtonId()) {
 
             case R.id.radioButtonComum:
                 raridade = getString(R.string.comum);
@@ -315,22 +272,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        Intent intent = new Intent();
-
-        if(editId != null){
-            intent.putExtra(ID, editId);
-        }
-        intent.putExtra(FABRICANTE, fabricante);
-        intent.putExtra(MARCA, marca);
-        intent.putExtra(MODELO, modelo);
-        intent.putExtra(COR, cor);
-        intent.putExtra(ANO, ano);
-        intent.putExtra(LOOSE, loose);
-        intent.putExtra(RARIDADE, raridade);
-
-        intent.getAction();
-
-
         MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
         Miniatura miniatura = new Miniatura(
                 fabricante,
@@ -341,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                 cbLoose.isChecked(),
                 raridade
         );
-        if(modo == NOVO){
+        if (modo == NOVO) {
             database.miniaturaDAO().insert(miniatura);
         } else {
             miniatura.setId(Integer.parseInt(editId));
@@ -349,12 +290,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        setResult(Activity.RESULT_OK, intent);
+        setResult(Activity.RESULT_OK);
 
         finish();
     }
 
-/*    public void cancelar(){
+    public void cancelar(){
         setResult(Activity.RESULT_CANCELED);
         finish();
     }
@@ -362,9 +303,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         cancelar();
-    }*/
+    }
 
-    public void limparCampos(){
+    public void limparCampos() {
 
         editTextAno.setText(null);
 
@@ -382,13 +323,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void mostrarMensagem(String mensagem){
+    private void mostrarMensagem(String mensagem) {
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuItemSalvar:
                 salvar();
                 mostrarMensagem(getString(R.string.salvar));

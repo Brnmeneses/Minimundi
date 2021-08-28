@@ -57,4 +57,9 @@
     <string name="alterar_miniatura">Alterar Miniatura</string>
     <string name="na_embaladao">Embalagem Original</string>
     <string name="sort">Ordem</string>
+    <string name="alert">Aviso</string>
+    <string name="please_confirm">Você tem certeza?</string>
+    <string name="no">Não</string>
+    <string name="yes">Sim</string>
+    <string name="confirmation">Confirmação</string>
 </resources>

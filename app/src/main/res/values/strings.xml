@@ -236,5 +236,11 @@
     <!--Volvo-->
     <string name="_850_estate" translatable="false">850 Estate</string>
     <string name="sort">Sort</string>
+    <string name="alert">Alert</string>
+    <string name="ok" translatable="false">Ok</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="please_confirm">Are you sure?</string>
 
 </resources>
