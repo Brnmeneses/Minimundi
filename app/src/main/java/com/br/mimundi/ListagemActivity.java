@@ -201,13 +201,13 @@ public class ListagemActivity extends AppCompatActivity {
                 MainActivity.class);
 
         intent.putExtra(MainActivity.ID, String.valueOf(miniatura.getId()));
-        intent.putExtra(MainActivity.FABRICANTE, miniatura.getFabricante());
+/*        intent.putExtra(MainActivity.FABRICANTE, miniatura.getFabricante());
         intent.putExtra(MainActivity.MARCA, miniatura.getMarca());
         intent.putExtra(MainActivity.MODELO, miniatura.getModelo());
         intent.putExtra(MainActivity.COR, miniatura.getCor());
         intent.putExtra(MainActivity.ANO, miniatura.getAno());
         intent.putExtra(MainActivity.LOOSE, miniatura.getStringLoose());
-        intent.putExtra(MainActivity.RARIDADE, miniatura.getRaridade());
+        intent.putExtra(MainActivity.RARIDADE, miniatura.getRaridade());*/
 
         startActivityForResult(intent, MainActivity.ALTERAR);
     }

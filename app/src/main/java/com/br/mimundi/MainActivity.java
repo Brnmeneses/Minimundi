@@ -164,13 +164,27 @@ public class MainActivity extends AppCompatActivity {
             setTitle(getString(R.string.alterar_miniatura));
 
             editId = bundle.getString(ID);
-            editFabricante = bundle.getString(FABRICANTE);
+
+            int id2 = Integer.parseInt(editId);
+
+            MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
+            Miniatura miniatura = database.miniaturaDAO().queryForId(id2);
+
+            editFabricante = miniatura.getFabricante();
+            editMarca = miniatura.getMarca();
+            editModelo = miniatura.getModelo();
+            editCor = miniatura.getCor();
+            editAno = miniatura.getAno();
+            editLoose = miniatura.getStringLoose();
+            editRaridade = miniatura.getRaridade();
+
+/*            editFabricante = bundle.getString(FABRICANTE);
             editMarca = bundle.getString(MARCA);
             editModelo = bundle.getString(MODELO);
             editCor = bundle.getString(COR);
             editAno = bundle.getString(ANO);
             editLoose = bundle.getString(LOOSE);
-            editRaridade = bundle.getString(RARIDADE);
+            editRaridade = bundle.getString(RARIDADE);*/
 
             popularEditFabricante(editFabricante);
             popularEditMarca(editMarca);
@@ -318,18 +332,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         MiniaturaDatabase database = MiniaturaDatabase.getDatabase(this);
-
-        database.miniaturaDAO().insert(
-                new Miniatura(
-                        fabricante,
-                        marca,
-                        modelo,
-                        ano,
-                        cor,
-                        cbLoose.isChecked(),
-                        raridade
-                )
+        Miniatura miniatura = new Miniatura(
+                fabricante,
+                marca,
+                modelo,
+                ano,
+                cor,
+                cbLoose.isChecked(),
+                raridade
         );
+        if(modo == NOVO){
+            database.miniaturaDAO().insert(miniatura);
+        } else {
+            miniatura.setId(Integer.parseInt(editId));
+            database.miniaturaDAO().update(miniatura);
+        }
+
 
         setResult(Activity.RESULT_OK, intent);
 
