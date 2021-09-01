@@ -1,204 +1,246 @@
 <resources>
     <string name="app_name">Minimundi</string>
-    <string name="fabricante">Fabricante</string>
+
+    <string name="fabricante">Maker</string>
     <string name="novo_cadastro">Novo Cadastro</string>
-    <string name="marca">Marca</string>
-    <string name="modelo">Modelo</string>
-    <string name="vazio">""</string>
+    <string name="marca">Manufacture</string>
+    <string name="modelo">Model</string>
+    <string name="vazio" translatable="false">""</string>
+    <string name="ano">Year</string>
+    <string name="serie">Series</string>
+    <string name="cor">Color</string>
+
+
+    <!--Cores-->
+    <string name="amarelo">Yellow</string>
+    <string name="azul">Blue</string>
+    <string name="bege">Beige</string>
+    <string name="branco">White</string>
+    <string name="cinza">Gray</string>
+    <string name="laranja">Orange</string>
+    <string name="lilas">Lilac</string>
+    <string name="marrom">Brown</string>
+    <string name="preto">Black</string>
+    <string name="rosa">Pink</string>
+    <string name="roxo">Purple</string>
+    <string name="verde">Green</string>
+    <string name="vermelho">Red</string>
+    <string name="vinho">Wine</string>
+
+
+    <string name="raridade">Rarity</string>
+    <string name="comum">Common</string>
+    <string name="raro">Rare</string>
+    <string name="thunt">T-Hunted</string>
+    <string name="confirmar">Confirm</string>
+    <string name="limpar">Clean</string>
+    <string name="limpar_campos">Fields Clean</string>
+    <string name="hint_serie">Series</string>
+    <string name="loose">Loose?</string>
+    <string name="hint_ano">Year</string>
+    <string name="nome">Name</string>
+    <string name="obs">Observation</string>
+    <string name="foi_clicado">is selected</string>
+
+    <!--Anos-->
+    <string name="_2021" translatable="false">2021</string>
+    <string name="_2020" translatable="false">2020</string>
+    <string name="_2019" translatable="false">2019</string>
+    <string name="_2015" translatable="false">2015</string>
+    <string name="_2014" translatable="false">2014</string>
+    <string name="_2008" translatable="false">2008</string>
+    <string name="_2007" translatable="false">2007</string>
+    <string name="_1999" translatable="false">1999</string>
+
+    <string name="autor" translatable="false">Bruno Rodrigues Melo de Meneses</string>
+    <string name="curso">Specialization JAVA XX</string>
+    <string name="email" translatable="false">brnmeneses@hotmail.com</string>
+    <string name="bio">App designed to make it easier for collectors to keep their collection data up to date</string>
+    <string name="utfpr" translatable="false">Universidade Tecnológica Federal do Paraná UTFPR</string>
+    <string name="cadastrar">Register</string>
+    <string name="autoria">Author</string>
+    <string name="salvar">Save</string>
+    <string name="sucesso">Saved successfully</string>
+    <string name="sobre">About</string>
+    <string name="adcionar">Add</string>
+    <string name="listagem">My Collection</string>
+    <string name="alterar">Edit</string>
+    <string name="excluir">Delete</string>
+    <string name="nova_miniatura">New Miniature</string>
+    <string name="alterar_miniatura">Edit Miniature</string>
+    <string name="na_embaladao">" Original Case"</string>
 
     <!--Fabricantes-->
-    <string name="hot_wheels">Hot-Wheels</string>
-    <string name="maisto">Maisto</string>
-    <string name="matchbox">Matchbox</string>
-    <string name="jada">Jada</string>
-    <string name="kyosho">Kyosho</string>
+    <string name="hot_wheels" translatable="false">Hot wheels</string>
+    <string name="maisto" translatable="false">Maisto</string>
+    <string name="matchbox" translatable="false">Matchbox</string>
+    <string name="jada" translatable="false">Jada</string>
+    <string name="kyosho" translatable="false">Kyosho</string>
 
     <!--Marcas-->
-    <string name="audi">Audi</string>
-    <string name="bmw">Bmw</string>
-    <string name="chevrolet">Chevrolet</string>
-    <string name="citroen">Citroen</string>
-    <string name="dodge">Dodge</string>
-    <string name="ferrari">Ferrari</string>
-    <string name="fiat">Fiat</string>
-    <string name="ford">Ford</string>
-    <string name="gmc">GMC</string>
-    <string name="honda">Honda</string>
-    <string name="hyundai">Hyundai</string>
-    <string name="jaguar">Jaguar</string>
-    <string name="jeep">Jeep</string>
-    <string name="kia">Kia</string>
-    <string name="lamborghini">Lamborghini</string>
-    <string name="lancia">Lancia</string>
-    <string name="land_rover">Land Rover</string>
-    <string name="mazda">Mazda</string>
-    <string name="mclaren">Mclaren</string>
-    <string name="mercedes">Mercedes-Benz</string>
-    <string name="mini">Mini</string>
-    <string name="mitsubishi">Mitsubishi</string>
-    <string name="n_a">"N/A"</string>
-    <string name="nissan">Nissan</string>
-    <string name="peugeot">Peugeot</string>
-    <string name="plymouth">Plymouth</string>
-    <string name="porsche">Porsche</string>
-    <string name="renault">Renault</string>
-    <string name="subaru">Subaru</string>
-    <string name="tesla">Tesla</string>
-    <string name="toyota">Toyota</string>
-    <string name="volkswagen">Volkswagen</string>
-    <string name="volvo">Volvo</string>
+    <string name="audi" translatable="false">Audi</string>
+    <string name="bmw" translatable="false">Bmw</string>
+    <string name="chevrolet" translatable="false">Chevrolet</string>
+    <string name="citroen" translatable="false">Citroen</string>
+    <string name="dodge" translatable="false">Dodge</string>
+    <string name="ferrari" translatable="false">Ferrari</string>
+    <string name="fiat" translatable="false">Fiat</string>
+    <string name="ford" translatable="false">Ford</string>
+    <string name="gmc" translatable="false">GMC</string>
+    <string name="honda" translatable="false">Honda</string>
+    <string name="hyundai" translatable="false">Hyundai</string>
+    <string name="jaguar" translatable="false">Jaguar</string>
+    <string name="jeep" translatable="false">Jeep</string>
+    <string name="kia" translatable="false">Kia</string>
+    <string name="lamborghini" translatable="false">Lamborghini</string>
+    <string name="lancia" translatable="false">Lancia</string>
+    <string name="land_rover" translatable="false">Land Rover</string>
+    <string name="mazda" translatable="false">Mazda</string>
+    <string name="mclaren" translatable="false">Mclaren</string>
+    <string name="mercedes" translatable="false">Mercedes-Benz</string>
+    <string name="mini" translatable="false">Mini</string>
+    <string name="mitsubishi" translatable="false">Mitsubishi</string>
+    <string name="n_a" translatable="false">"N/A"</string>
+    <string name="nissan" translatable="false">Nissan</string>
+    <string name="peugeot" translatable="false">Peugeot</string>
+    <string name="plymouth" translatable="false">Plymouth</string>
+    <string name="porsche" translatable="false">Porsche</string>
+    <string name="renault" translatable="false">Renault</string>
+    <string name="subaru" translatable="false">Subaru</string>
+    <string name="tesla" translatable="false">Tesla</string>
+    <string name="toyota" translatable="false">Toyota</string>
+    <string name="volkswagen" translatable="false">Volkswagen</string>
+    <string name="volvo" translatable="false">Volvo</string>
 
 
     <!--Modelos-->
     <!--Audi-->
-    A5<string name="a5">A5</string>
-    TT<string name="tt">TT</string>
-    R8<string name="r8">R8</string>
+    A5
+    <string name="a5" translatable="false">A5</string>
+    TT
+    <string name="tt" translatable="false">TT</string>
+    R8
+    <string name="r8" translatable="false">R8</string>
 
     <!--BMW-->
-    M2<string name="m2">M2</string>
-    M3<string name="m3">M3</string>
-    M4<string name="m4">M4</string>
+    M2
+    <string name="m2" translatable="false">M2</string>
+    M3
+    <string name="m3" translatable="false">M3</string>
+    M4
+    <string name="m4" translatable="false">M4</string>
 
     <!--Chavrolet-->
-    <string name="corvette">Corvette</string>
-    <string name="impala">Impala</string>
-    <string name="c10">C-10</string>
+    <string name="corvette" translatable="false">Corvette</string>
+    <string name="impala" translatable="false">Impala</string>
+    <string name="c10" translatable="false">C-10</string>
 
     <!--Citroen-->
-    <string name="c3">C3</string>
-    <string name="c4">C4</string>
+    <string name="c3" translatable="false">C3</string>
+    <string name="c4" translatable="false">C4</string>
 
     <!--Dodge-->
-    <string name="challenger">Challenger</string>
+    <string name="challenger" translatable="false">Challenger</string>
 
     <!--Ferrari-->
-    <string name="_360">360</string>
-    <string name="_430">430</string>
-    <string name="enzo">Enzo</string>
-    <string name="laferrari">LaFerrari</string>
-    <string name="_599">599</string>
+    <string name="_360" translatable="false">360</string>
+    <string name="_430" translatable="false">430</string>
+    <string name="enzo" translatable="false">Enzo</string>
+    <string name="laferrari" translatable="false">LaFerrari</string>
+    <string name="_599" translatable="false">599</string>
 
     <!--Fiat-->
-    <string name="uno">Uno</string>
-    <string name="punto">Punto</string>
-    <string name="toro">Toro</string>
+    <string name="uno" translatable="false">Uno</string>
+    <string name="punto" translatable="false">Punto</string>
+    <string name="toro" translatable="false">Toro</string>
 
     <!--Ford-->
-    <string name="f150">F-150</string>
-    <string name="gt">GT</string>
+    <string name="f150" translatable="false">F-150</string>
+    <string name="gt" translatable="false">GT</string>
 
     <!--GMC-->
-    <string name="syclone">Syclone</string>
+    <string name="syclone" translatable="false">Syclone</string>
 
     <!--Honda-->
-    <string name="civic">Civic</string>
-    <string name="prelude">Prelude</string>
-    <string name="nsx">NSX</string>
+    <string name="civic" translatable="false">Civic</string>
+    <string name="prelude" translatable="false">Prelude</string>
+    <string name="nsx" translatable="false">NSX</string>
 
     <!--Hyundai-->
-    <string name="veloster">Veloster</string>
+    <string name="veloster" translatable="false">Veloster</string>
 
     <!--Jaguar-->
-    <string name="xe">XE</string>
+    <string name="xe" translatable="false">XE</string>
 
     <!--KIA-->
-    <string name="stinger">Stinger</string>
-    <string name="sportage">Sportage</string>
+    <string name="stinger" translatable="false">Stinger</string>
+    <string name="sportage" translatable="false">Sportage</string>
 
     <!--Lamborghini-->
-    <string name="urus">Urus</string>
-    <string name="aventador">Aventador</string>
-    <string name="gallardo">Gallardo</string>
+    <string name="urus" translatable="false">Urus</string>
+    <string name="aventador" translatable="false">Aventador</string>
+    <string name="gallardo" translatable="false">Gallardo</string>
 
     <!--Lancia-->
-    <string name="delta">Delta</string>
+    <string name="delta" translatable="false">Delta</string>
 
     <!--Land Rover-->
-    <string name="defender">Defender</string>
-    <string name="velar">Velar</string>
+    <string name="defender" translatable="false">Defender</string>
+    <string name="velar" translatable="false">Velar</string>
 
     <!--Mazda-->
-    <string name="miata">Miata</string>
+    <string name="miata" translatable="false">Miata</string>
 
     <!--Mclaren-->
-    <string name="f1">F1</string>
-    <string name="speedtail">Speedtail</string>
-    <string name="senna">Senna</string>
+    <string name="f1" translatable="false">F1</string>
+    <string name="speedtail" translatable="false">Speedtail</string>
+    <string name="senna" translatable="false">Senna</string>
 
     <!--Mercedes-Benz-->
-    <string name="amg_gt">F-150</string>
+    <string name="amg_gt" translatable="false">AMG GT</string>
 
     <!--Mini-->
-    <string name="cooper">Cooper</string>
+    <string name="cooper" translatable="false">Cooper</string>
 
     <!--Mitshubish-->
-    <string name="lancer">Lancer</string>
+    <string name="lancer" translatable="false">Lancer</string>
 
     <!--Nissan-->
-    <string name="gtr">GTR</string>
+    <string name="gtr" translatable="false">GTR</string>
 
     <!--Peugeot-->
-    <string name="_208">208</string>
+    <string name="_208" translatable="false">208</string>
 
     <!--Plymouth-->
-    <string name="superbird">Superbird</string>
+    <string name="superbird" translatable="false">Superbird</string>
 
     <!--Porsche-->
-    <string name="_911">911</string>
+    <string name="_911" translatable="false">911</string>
 
     <!--Subaru-->
-    <string name="brz">BRZ</string>
-    <string name="impreza">Impreza</string>
+    <string name="brz" translatable="false">BRZ</string>
+    <string name="impreza" translatable="false">Impreza</string>
 
     <!--Tesla-->
-    <string name="model_S">F-Model S</string>
-    <string name="model_3">Model 3</string>
+    <string name="model_S" translatable="false">F-Model S</string>
+    <string name="model_3" translatable="false">Model 3</string>
 
     <!--Toyota-->
-    <string name="_2000GT">F-2000GT</string>
-    <string name="celica">Celica</string>
+    <string name="_2000GT" translatable="false">F-2000GT</string>
+    <string name="celica" translatable="false">Celica</string>
 
     <!--Volkswagen-->
-    <string name="golf">F-Golf</string>
-    <string name="sciroco">F-Sciroco</string>
+    <string name="golf" translatable="false">F-Golf</string>
+    <string name="sciroco" translatable="false">F-Sciroco</string>
 
     <!--Volvo-->
-    <string name="_850_estate">850 Estate</string>
-    <string name="ano">Ano</string>
-    <string name="serie">Série</string>
-    <string name="cor">Cor</string>
-
-
-
-    <!--Cores-->
-    <string name="amarelo">Amarelo</string>
-    <string name="azul">Azul</string>
-    <string name="bege">Bege</string>
-    <string name="branco">Branco</string>
-    <string name="cinza">Cinza</string>
-    <string name="laranja">Laranja</string>
-    <string name="lilas">Lilas</string>
-    <string name="marrom">Marrom</string>
-    <string name="preto">Preto</string>
-    <string name="rosa">Rosa</string>
-    <string name="roxo">Roxo</string>
-    <string name="verde">Verde</string>
-    <string name="vermelho">Vermelho</string>
-    <string name="vinho">Vinho</string>
-
-
-    <string name="raridade">Raridade</string>
-    <string name="comum">Comum</string>
-    <string name="raro">Raro</string>
-    <string name="thunt">T-Hunted</string>
-    <string name="confirmar">Confirmar</string>
-    <string name="limpar">Limpar</string>
-    <string name="limpar_campos">Campos Limpos</string>
-    <string name="hint_serie">Série</string>
-    <string name="loose">Loose?</string>
-    <string name="hint_ano">Ano</string>
-    <string name="nome">Nome</string>
-    <string name="obs">Observação</string>
+    <string name="_850_estate" translatable="false">850 Estate</string>
+    <string name="sort">Sort</string>
+    <string name="alert">Alert</string>
+    <string name="ok" translatable="false">Ok</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="please_confirm">Are you sure?</string>
 
 </resources>

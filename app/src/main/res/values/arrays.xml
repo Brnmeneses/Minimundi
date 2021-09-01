@@ -207,4 +207,58 @@
         <item>@string/vinho</item>
     </string-array>
 
+
+    <string-array name="marcas_list">
+        <item>@string/audi</item>
+        <item>@string/bmw</item>
+        <item>@string/mercedes</item>
+        <item>@string/volvo</item>
+        <item>@string/tesla</item>
+        <item>@string/subaru</item>
+        <item>@string/porsche</item>
+        <item>@string/toyota</item>
+        <item>@string/honda</item>
+        <item>@string/chevrolet</item>
+    </string-array>
+
+    <string-array name="modelos_list">
+        <item>@string/r8</item>
+        <item>@string/m3</item>
+        <item>@string/amg_gt</item>
+        <item>@string/_850_estate</item>
+        <item>@string/model_S</item>
+        <item>@string/impreza</item>
+        <item>@string/_911</item>
+        <item>@string/_2000GT</item>
+        <item>@string/prelude</item>
+        <item>@string/corvette</item>
+    </string-array>
+
+    <string-array name="cores_list">
+        <item>@string/amarelo</item>
+        <item>@string/azul</item>
+        <item>@string/bege</item>
+        <item>@string/branco</item>
+        <item>@string/cinza</item>
+        <item>@string/laranja</item>
+        <item>@string/lilas</item>
+        <item>@string/marrom</item>
+        <item>@string/preto</item>
+        <item>@string/roxo</item>
+    </string-array>
+
+    <string-array name="anos_list">
+        <item>@string/_2019</item>
+        <item>@string/_1999</item>
+        <item>@string/_2007</item>
+        <item>@string/_2014</item>
+        <item>@string/_2021</item>
+        <item>@string/_2015</item>
+        <item>@string/_2008</item>
+        <item>@string/_2020</item>
+        <item>@string/_2007</item>
+        <item>@string/_2021</item>
+    </string-array>
+
+
 </resources>
